@@ -14,7 +14,7 @@ namespace Transito
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            CreateWebHostBuilder(args).UseKestrel().UseContentRoot(Directory.GetCurrentDirectory()).UseIISIntegration().Build().Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
