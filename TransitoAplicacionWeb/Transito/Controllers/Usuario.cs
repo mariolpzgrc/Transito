@@ -15,6 +15,7 @@ namespace Transito.Controllers
         {
             return View();
         }
+        //public IActionResult Validar(String login, String password)
 
-    }   
+    }
 }

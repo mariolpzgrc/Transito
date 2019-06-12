@@ -44,7 +44,7 @@ namespace Transito
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Usuario/Error");
                 app.UseHsts();
             }
 
