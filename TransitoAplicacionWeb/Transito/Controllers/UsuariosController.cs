@@ -13,10 +13,7 @@ namespace Transito.Controllers
     [ApiController]
     public class UsuariosController : ControllerBase
     {
-        public IActionResult Index()
-        {
-            return Views();
-        }
+        
         private readonly TransitoContext _context;
 
         public UsuariosController(TransitoContext context)
@@ -124,6 +121,10 @@ namespace Transito.Controllers
         private bool UsuarioExists(int id)
         {
             return _context.Usuario.Any(e => e.Idusuario == id);
+        }
+        public IActionResult Index()
+        {
+            return View();
         }
     }
 }

@@ -56,7 +56,7 @@ namespace Transito
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=UsuariosController}/{action=Index}/{id?}");
+                    template: "{controller=UsuarioController}/{action=Index}/{id?}");
             });
         }
     }
