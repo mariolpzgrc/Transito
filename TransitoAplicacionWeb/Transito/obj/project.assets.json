@@ -1641,18 +1641,18 @@
           "lib/netstandard1.3/Microsoft.DotNet.PlatformAbstractions.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore/2.1.1": {
+      "Microsoft.EntityFrameworkCore/2.1.8": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Abstractions": "2.1.1",
-          "Microsoft.EntityFrameworkCore.Analyzers": "2.1.1",
+          "Microsoft.EntityFrameworkCore.Abstractions": "2.1.8",
+          "Microsoft.EntityFrameworkCore.Analyzers": "2.1.8",
           "Microsoft.Extensions.Caching.Memory": "2.1.1",
           "Microsoft.Extensions.DependencyInjection": "2.1.1",
           "Microsoft.Extensions.Logging": "2.1.1",
           "Remotion.Linq": "2.2.0",
           "System.Collections.Immutable": "1.5.0",
           "System.ComponentModel.Annotations": "4.5.0",
-          "System.Diagnostics.DiagnosticSource": "4.5.0",
+          "System.Diagnostics.DiagnosticSource": "4.5.1",
           "System.Interactive.Async": "3.1.1"
         },
         "compile": {
@@ -1662,7 +1662,7 @@
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Abstractions/2.1.1": {
+      "Microsoft.EntityFrameworkCore.Abstractions/2.1.8": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {}
@@ -1671,14 +1671,14 @@
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Analyzers/2.1.1": {
+      "Microsoft.EntityFrameworkCore.Analyzers/2.1.8": {
         "type": "package"
       },
-      "Microsoft.EntityFrameworkCore.Design/2.1.1": {
+      "Microsoft.EntityFrameworkCore.Design/2.1.8": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.5.0",
-          "Microsoft.EntityFrameworkCore.Relational": "2.1.1"
+          "Microsoft.EntityFrameworkCore.Relational": "2.1.8"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.dll": {}
@@ -1702,10 +1702,10 @@
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.InMemory.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Relational/2.1.1": {
+      "Microsoft.EntityFrameworkCore.Relational/2.1.8": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "2.1.1"
+          "Microsoft.EntityFrameworkCore": "2.1.8"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.dll": {}
@@ -1714,10 +1714,10 @@
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.SqlServer/2.1.1": {
+      "Microsoft.EntityFrameworkCore.SqlServer/2.1.8": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Relational": "2.1.1",
+          "Microsoft.EntityFrameworkCore.Relational": "2.1.8",
           "System.Data.SqlClient": "4.5.1"
         },
         "compile": {
@@ -1727,10 +1727,10 @@
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.SqlServer.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Tools/2.1.1": {
+      "Microsoft.EntityFrameworkCore.Tools/2.1.8": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Design": "2.1.1"
+          "Microsoft.EntityFrameworkCore.Design": "2.1.8"
         },
         "compile": {
           "lib/netstandard2.0/_._": {}
@@ -3301,7 +3301,7 @@
           "ref/netstandard1.3/System.Diagnostics.Debug.dll": {}
         }
       },
-      "System.Diagnostics.DiagnosticSource/4.5.0": {
+      "System.Diagnostics.DiagnosticSource/4.5.1": {
         "type": "package",
         "compile": {
           "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
@@ -5527,7 +5527,7 @@
       ]
     },
     "Microsoft.AspNetCore.Razor.Design/2.1.2": {
-      "sha512": "fe1+dpy+eM4IX1zodsvkihO1Spuj0NecfStWzvkYoMo7/ziOsqSv4vFK36ZpBfHa4gpdCEwaU46EPzdq+ZDYhQ==",
+      "sha512": "ab4+TZw3Sxqrr5TwrwVyABeQkhSxYMJXgG6yZw7T+r6Vz+hcOt+pK79o15ESG7kZvWAK9wRG7emnTIia5O6R1Q==",
       "type": "package",
       "path": "microsoft.aspnetcore.razor.design/2.1.2",
       "hasTools": true,
@@ -6068,48 +6068,48 @@
         "microsoft.dotnet.platformabstractions.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore/2.1.1": {
-      "sha512": "JuWdlcEkd6VePS1uaiEfGDCuXNkRHFdNuEEdRhlU5E/ikuhSBDy7j0L4hoLAO4/w5u4YpSy59Xwtsq+cIAo+3w==",
+    "Microsoft.EntityFrameworkCore/2.1.8": {
+      "sha512": "NJtiBtIBbDXioh0uR4UHxepMZSzFbB9E6aYsZbFmxWqTWUMY2X5T09e2FbV0f00fM+oCNSCUvZhdpbm/TH7XFg==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore/2.1.1",
+      "path": "microsoft.entityframeworkcore/2.1.8",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.dll",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.xml",
-        "microsoft.entityframeworkcore.2.1.1.nupkg.sha512",
+        "microsoft.entityframeworkcore.2.1.8.nupkg.sha512",
         "microsoft.entityframeworkcore.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Abstractions/2.1.1": {
-      "sha512": "ZAJuDHQ6y8UMfoEPzASNPKah0PtanxBmygtoFFYBg4mwBwHHIekY7TKZZT8nqKs4pSNC1b7z+gRLbSB5ILGlWQ==",
+    "Microsoft.EntityFrameworkCore.Abstractions/2.1.8": {
+      "sha512": "yE7wcKP86ts31RlHtJ3PBE7zV9lV6AfZim+Z/+E8CR+AYkVFoL+IqtRzcWVYIDw1nI+HkTN4fP9mIpk1hvDCHA==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.abstractions/2.1.1",
+      "path": "microsoft.entityframeworkcore.abstractions/2.1.8",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Abstractions.xml",
-        "microsoft.entityframeworkcore.abstractions.2.1.1.nupkg.sha512",
+        "microsoft.entityframeworkcore.abstractions.2.1.8.nupkg.sha512",
         "microsoft.entityframeworkcore.abstractions.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Analyzers/2.1.1": {
-      "sha512": "DiKQA07lCZLV5yyTj0KHh+wJzWl8sO2b1sdW31afxgV6NTrFq29NBQKnxllGkwZ5xr8KwrppRYdHhN8r0+FYVQ==",
+    "Microsoft.EntityFrameworkCore.Analyzers/2.1.8": {
+      "sha512": "1sr6h8XoR7tsLnGldLoTvF+VlAiYV3adJYmgux37O1aqJugZ26cLyEZgYGfkh83eM0DoZdw+Sml+enmRBjvA4A==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.analyzers/2.1.1",
+      "path": "microsoft.entityframeworkcore.analyzers/2.1.8",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "analyzers/dotnet/cs/Microsoft.EntityFrameworkCore.Analyzers.dll",
-        "microsoft.entityframeworkcore.analyzers.2.1.1.nupkg.sha512",
+        "microsoft.entityframeworkcore.analyzers.2.1.8.nupkg.sha512",
         "microsoft.entityframeworkcore.analyzers.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Design/2.1.1": {
-      "sha512": "Bu5c0Eec+tSW1PA0NxDgxzF0cMQjeGQC5RtBtMm3heow2J7X+2LhdkGFPr4IAL6bFLHJiVcE3csng3i6fB/PtA==",
+    "Microsoft.EntityFrameworkCore.Design/2.1.8": {
+      "sha512": "VwQaua8aBRPGLL3VK8nlyHrcwKZjVDGv9USFwtRX1kn4M6yCc46nsVQEVYQG+d+l4y9Jo0qH+XQ1nm8vqGmdcQ==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.design/2.1.1",
+      "path": "microsoft.entityframeworkcore.design/2.1.8",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -6119,7 +6119,7 @@
         "lib/net461/Microsoft.EntityFrameworkCore.Design.xml",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.dll",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.xml",
-        "microsoft.entityframeworkcore.design.2.1.1.nupkg.sha512",
+        "microsoft.entityframeworkcore.design.2.1.8.nupkg.sha512",
         "microsoft.entityframeworkcore.design.nuspec"
       ]
     },
@@ -6136,42 +6136,42 @@
         "microsoft.entityframeworkcore.inmemory.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Relational/2.1.1": {
-      "sha512": "NqH03e/oh0KEy5mepy0Eb5nx49eZOKnpa2/d8iwy7IJTapmqdNWx03kuUycaJ+haHmE5Ad8KtzDJK/Nz3OfFFA==",
+    "Microsoft.EntityFrameworkCore.Relational/2.1.8": {
+      "sha512": "ClVnAVa4OH3g4fLpD8pgzdfJmF7WJK+PPCxsTUZUlbuPHut0LBlM/TKDcSScHQI0ePcY+xgEmZ9GAZqtNXW4zg==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.relational/2.1.1",
+      "path": "microsoft.entityframeworkcore.relational/2.1.8",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.dll",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.xml",
-        "microsoft.entityframeworkcore.relational.2.1.1.nupkg.sha512",
+        "microsoft.entityframeworkcore.relational.2.1.8.nupkg.sha512",
         "microsoft.entityframeworkcore.relational.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.SqlServer/2.1.1": {
-      "sha512": "/J15ItbPu+YWmqCs7yDrXNSY9NooWv5sFKrV1aYvDjCi2Z4Ja8LOCQVNynJTjNxDfDihp+PPLD/HoD0e2iZD8Q==",
+    "Microsoft.EntityFrameworkCore.SqlServer/2.1.8": {
+      "sha512": "pVEh7mftFLSwea4hMyXEYA08oHugkgUdCh0W66Jq6NVSQKxrTQrwqt3Dke/x4LtFlTordNISBBQar+HudjStLA==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.sqlserver/2.1.1",
+      "path": "microsoft.entityframeworkcore.sqlserver/2.1.8",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.SqlServer.dll",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.SqlServer.xml",
-        "microsoft.entityframeworkcore.sqlserver.2.1.1.nupkg.sha512",
+        "microsoft.entityframeworkcore.sqlserver.2.1.8.nupkg.sha512",
         "microsoft.entityframeworkcore.sqlserver.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Tools/2.1.1": {
-      "sha512": "Qfz8Au39cALAgxzvfoz6aPkmTuaFmlDYeUjCecaNlQ5x2jxs1rACtWddA5Yu4D3YSsHuHqttgZA6tzKKNVo9mg==",
+    "Microsoft.EntityFrameworkCore.Tools/2.1.8": {
+      "sha512": "eBkjnWu1aHkT5hA5r9tzjtf6G3293SCxOhePH8ok7d6K54Km/ups8IfMTLU9Pd3LA7oKBcGH05WyKFScxjxY5A==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.tools/2.1.1",
+      "path": "microsoft.entityframeworkcore.tools/2.1.8",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/_._",
-        "microsoft.entityframeworkcore.tools.2.1.1.nupkg.sha512",
+        "microsoft.entityframeworkcore.tools.2.1.8.nupkg.sha512",
         "microsoft.entityframeworkcore.tools.nuspec",
         "tools/EntityFrameworkCore.PowerShell2.psd1",
         "tools/EntityFrameworkCore.PowerShell2.psm1",
@@ -7829,7 +7829,7 @@
       ]
     },
     "runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
-      "sha512": "LdIvj7Bi2jiaNTqY/ezZGVXHe1KI5fjLSI026O1TjVzsmdgTP/zTF+f3nwHCjwttyhsPBEiswv0PekimPWZwWg==",
+      "sha512": "c3YNH1GQJbfIPJeCnr4avseugSqPrxwIqzthYyZDN6EuOyNOzq+y2KSUfRcXauya1sF4foESTgwM5e1A8arAKw==",
       "type": "package",
       "path": "runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
@@ -7869,7 +7869,7 @@
       ]
     },
     "runtime.native.System.IO.Compression/4.3.0": {
-      "sha512": "b+V9JC/Ii3sR659flBeaBJww111425tgjcDS1k+hqV4sGh9FALRDBvJnDtQ895gAzpPTUOFDHdqaZ2Et7BpZMg==",
+      "sha512": "INBPonS5QPEgn7naufQFXJEp3zX6L4bwHgJ/ZH78aBTpeNfQMtf7C6VrAFhlq2xxWBveIOWyFzQjJ8XzHMhdOQ==",
       "type": "package",
       "path": "runtime.native.system.io.compression/4.3.0",
       "files": [
@@ -7947,7 +7947,7 @@
       ]
     },
     "runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.Apple/4.3.0": {
-      "sha512": "Kh9W4agE0r/hK8AX1LvyQI2NrKHBL8pO0gRoDTdDb0LL6Ta1Z2OtFx3lOaAE0ZpCUc/dt9Wzs3rA7a3IsKdOVA==",
+      "sha512": "kVXCuMTrTlxq4XOOMAysuNwsXWpYeboGddNGpIgNSZmv1b6r/s/DPk0fYMB7Q5Qo4bY68o48jt4T4y5BVecbCQ==",
       "type": "package",
       "path": "runtime.osx.10.10-x64.runtime.native.system.security.cryptography.apple/4.3.0",
       "files": [
@@ -7986,7 +7986,7 @@
       ]
     },
     "runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
-      "sha512": "JGc0pAWRE8lB4Ucygk2pYSKbUPLlAIq6Bczf5/WF2D/VKJEPtYlVUMxk8fbl1zRfTWzSHi+VcFZlaPlWiNxeKg==",
+      "sha512": "ytoewC6wGorL7KoCAvRfsgoJPJbNq+64k2SqW6JcOAebWsFUvCCYgfzQMrnpvPiEl4OrblUlhF2ji+Q1+SVLrQ==",
       "type": "package",
       "path": "runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
@@ -8348,7 +8348,7 @@
       ]
     },
     "System.Collections.Specialized/4.3.0": {
-      "sha512": "NoPBj0ykejqAWW4p4gGtrrL+3c84ZLSvGnHgq422ew1Rj4WKj1FA8/BCybqC111EtgcqUl6ZJNFYYS22HLgbjA==",
+      "sha512": "Epx8PoVZR0iuOnJJDzp7pWvdfMMOAvpUo95pC4ScH2mJuXkKA2Y4aR3cG9qt2klHgSons1WFh4kcGW7cSXvrxg==",
       "type": "package",
       "path": "system.collections.specialized/4.3.0",
       "files": [
@@ -8793,10 +8793,10 @@
         "system.diagnostics.debug.nuspec"
       ]
     },
-    "System.Diagnostics.DiagnosticSource/4.5.0": {
-      "sha512": "eIHRELiYDQvsMToML81QFkXEEYXUSUT2F28t1SGrevWqP+epFdw80SyAXIKTXOHrIEXReFOEnEr7XlGiC2GgOg==",
+    "System.Diagnostics.DiagnosticSource/4.5.1": {
+      "sha512": "zCno/m44ymWhgLFh7tELDG9587q0l/EynPM0m4KgLaWQbz/TEKvNRX2YT5ip2qXW/uayifQ2ZqbnErsKJ4lYrQ==",
       "type": "package",
-      "path": "system.diagnostics.diagnosticsource/4.5.0",
+      "path": "system.diagnostics.diagnosticsource/4.5.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -8812,7 +8812,7 @@
         "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.xml",
         "lib/portable-net45+win8+wpa81/System.Diagnostics.DiagnosticSource.dll",
         "lib/portable-net45+win8+wpa81/System.Diagnostics.DiagnosticSource.xml",
-        "system.diagnostics.diagnosticsource.4.5.0.nupkg.sha512",
+        "system.diagnostics.diagnosticsource.4.5.1.nupkg.sha512",
         "system.diagnostics.diagnosticsource.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -11003,7 +11003,7 @@
       ]
     },
     "System.Runtime.Serialization.Primitives/4.3.0": {
-      "sha512": "2Z5t70a2SwMsfQDp9KOclaZNyQhfIga2gppq9lIUDM1A4ohTshn4JqT7ir8bvIhXgorWKYDAr6rPzEbi/nTGKg==",
+      "sha512": "Wz+0KOukJGAlXjtKr+5Xpuxf8+c8739RI1C+A2BoQZT+wMCCoMDDdO8/4IRHfaVINqL78GO8dW8G2lW/e45Mcw==",
       "type": "package",
       "path": "system.runtime.serialization.primitives/4.3.0",
       "files": [
@@ -11329,7 +11329,7 @@
       ]
     },
     "System.Security.Cryptography.Csp/4.3.0": {
-      "sha512": "yO2k5o+Z+DiFRBvvB9vdRRAGHi6bm02M9OWXfCqQ8K0UxD3Woc3svQheZfb7PoTEFs0kGacO0IzzMWsb6Mkeow==",
+      "sha512": "X4s/FCkEUnRGnwR3aSfVIkldBmtURMhmexALNTwpjklzxWU7yjMk7GHLKOZTNkgnWnE0q7+BCf9N2LVRWxewaA==",
       "type": "package",
       "path": "system.security.cryptography.csp/4.3.0",
       "files": [
@@ -11400,7 +11400,7 @@
       ]
     },
     "System.Security.Cryptography.OpenSsl/4.3.0": {
-      "sha512": "vOYy7Jv9KsG3ld2hLt0GoERd82SZi4BelrbXLwI9yFBYX7kpbvUCWYo4eyevk47cuJXZ9ZLVAryANcc7iY71aA==",
+      "sha512": "h4CEgOgv5PKVF/HwaHzJRiVboL2THYCou97zpmhjghx5frc7fIvlkY1jL+lnIQyChrJDMNEXS6r7byGif8Cy4w==",
       "type": "package",
       "path": "system.security.cryptography.openssl/4.3.0",
       "files": [
@@ -12595,29 +12595,33 @@
     ".NETCoreApp,Version=v2.1": [
       "Microsoft.AspNetCore.App >= 2.1.1",
       "Microsoft.AspNetCore.Razor.Design >= 2.1.2",
+      "Microsoft.EntityFrameworkCore >= 2.1.8",
+      "Microsoft.EntityFrameworkCore.Design >= 2.1.8",
+      "Microsoft.EntityFrameworkCore.SqlServer >= 2.1.8",
+      "Microsoft.EntityFrameworkCore.Tools >= 2.1.8",
       "Microsoft.NETCore.App >= 2.1.0",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.4.10",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.1.9"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ferguzaja\\.nuget\\packages\\": {},
+    "C:\\Users\\lunix\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ferguzaja\\Desktop\\Transito\\TransitoAplicacionWeb\\Transito\\Transito.csproj",
+      "projectUniqueName": "C:\\Users\\lunix\\Documents\\ProyectoDesarrolloApps\\TransitoAplicacionWeb\\Transito\\Transito.csproj",
       "projectName": "Transito",
-      "projectPath": "C:\\Users\\ferguzaja\\Desktop\\Transito\\TransitoAplicacionWeb\\Transito\\Transito.csproj",
-      "packagesPath": "C:\\Users\\ferguzaja\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ferguzaja\\Desktop\\Transito\\TransitoAplicacionWeb\\Transito\\obj\\",
+      "projectPath": "C:\\Users\\lunix\\Documents\\ProyectoDesarrolloApps\\TransitoAplicacionWeb\\Transito\\Transito.csproj",
+      "packagesPath": "C:\\Users\\lunix\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\lunix\\Documents\\ProyectoDesarrolloApps\\TransitoAplicacionWeb\\Transito\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\ferguzaja\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\lunix\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12652,8 +12656,25 @@
             "target": "Package",
             "version": "[2.1.2, )"
           },
-          "Microsoft.NETCore.App": {
+          "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[2.1.8, )"
+          },
+          "Microsoft.EntityFrameworkCore.Design": {
+            "target": "Package",
+            "version": "[2.1.8, )"
+          },
+          "Microsoft.EntityFrameworkCore.SqlServer": {
+            "target": "Package",
+            "version": "[2.1.8, )"
+          },
+          "Microsoft.EntityFrameworkCore.Tools": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers",
             "suppressParent": "All",
+            "target": "Package",
+            "version": "[2.1.8, )"
+          },
+          "Microsoft.NETCore.App": {
             "target": "Package",
             "version": "[2.1.0, )",
             "autoReferenced": true
