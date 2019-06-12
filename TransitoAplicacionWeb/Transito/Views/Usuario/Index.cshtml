@@ -17,7 +17,6 @@
     <section id="contenedor">
         <section id="izquierdo">
             <img src="~/imagenes/usuario.jpg" id="logo" />
-
         </section>
         <section id="derecho">
             <h2>Bienvenidos al Sistema</h2>
@@ -41,6 +40,13 @@
                             <!--<button id="enviar" name="enviar">Enviar</button>-->
                         </td>
                     </tr>
+                    <tr>
+                        <td colspan="3" id="botones">
+                            <input class="myButton" type="submit" id="registro" name="registro"
+                                   value="registro" onclick="registrar(); return false;" />
+                            <!--<button id="enviar" name="enviar">Enviar</button>-->
+                        </td>
+                    </tr>
                 </table>
             </form>
         </section>
@@ -54,7 +60,11 @@
                 } else
                     alert("Debe llenar los datos de inicio de sesión");
             }
-
+            function registrar() {
+               routes.MapRoute(
+                    name: "default",
+                    template: "{controller=usuario}/{action=registro}/{id?}");
+            }
             function forma_valida() {
                 var txt_login = $("#login").val();
                 var txt_password = $("#password").val();
@@ -64,22 +74,7 @@
                     return false;
             }
 
-            function mensaje() {
-                //var bot = document.getElementById("botones");
-                //var btn = document.createElement("BUTTON");
-                //var t = document.createTextNode("Nuevo Botón");
-                //btn.classList.add("myButton")
-                //btn.appendChild(t);
-                //bot.appendChild(btn);
-                //bot.parentNode.removeChild(bot);
-
-                //alert(eti.innerHTML);
-                //eti.style.color = "red";
-                //alert("Hola mundo desde JavaScript");
-                //document.location = "registro.html";
-
-                //$("strong").css("color", "red");
-            }
+            
     </script>
 </body>
 </html>

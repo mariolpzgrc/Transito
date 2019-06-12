@@ -36,3 +36,4 @@ C:\Users\ferguzaja\Desktop\Transito\TransitoAplicacionWeb\Transito\obj\Debug\net
 C:\Users\ferguzaja\Desktop\Transito\TransitoAplicacionWeb\Transito\obj\Debug\netcoreapp2.1\Razor\Views\Home\paginaInicio.g.cshtml.cs
 C:\Users\ferguzaja\Desktop\Transito\TransitoAplicacionWeb\Transito\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Index.g.cshtml.cs
 C:\Users\ferguzaja\Desktop\Transito\TransitoAplicacionWeb\Transito\obj\Debug\netcoreapp2.1\Razor\Views\Usuario\Index.g.cshtml.cs
+C:\Users\ferguzaja\Desktop\Transito\TransitoAplicacionWeb\Transito\obj\Debug\netcoreapp2.1\Razor\Views\Usuario\registro.g.cshtml.cs
