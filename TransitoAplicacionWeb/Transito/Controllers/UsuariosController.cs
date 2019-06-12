@@ -9,12 +9,11 @@ using Transito.Models;
 
 namespace Transito.Controllers
 {
-    public class Usuario : Controller
-    {
-        [Route("api/[controller]")]
-        [ApiController]
-        public class UsuariosController : ControllerBase
+    [Route("api/[controller]")]
+    [ApiController]
+    public class UsuariosController : ControllerBase
         {
+            
             private readonly TransitoContext _context;
 
             public UsuariosController(TransitoContext context)
@@ -125,11 +124,7 @@ namespace Transito.Controllers
             }
         }
 
-public IActionResult Index()
-        {
-            return View();
-        }
+
         //public IActionResult Validar(String login, String password)
 
     }
-}

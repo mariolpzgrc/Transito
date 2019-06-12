@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Bienvenidos al Sistema tránsito del estado de Veracruz</title>
+    <link href="/css/sitio.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <table width="100%">
+            <tr>
+                <td><img src="imagenes/logoDGTE.jpg" height="100" /></td>
+                <td><h1>Gobierno del estado <br /><small>Direccion de transito del estado de veracruz</small></h1></td>
+            </tr>
+        </table>
+    </header>
+    <section id="contenedor">
+        <section id="izquierdo">
+            <img src="~/imagenes/usuario.jpg" id="logo" />
+        </section>
+        <section id="derecho">
+            <h2>Bienvenidos al Sistema</h2>
+            <h3>Inicio de Sesión -</h3>
+
+            <p>Favor de ingresar su nombre de usuario y contraseña</p>
+            <form name="forma" id="forma" action="/Usuario/Validar" method="post">
+                <table>
+                    <tr>
+                        <td><strong>Usuario:</strong></td>
+                        <td><input class="texto" type="text" id="login" name="login" placeholder="Ingrese su nombre de usuario"></td>
+                    </tr>
+                    <tr>
+                        <td><strong><span id="eti1">Contraseña:</span></strong></td>
+                        <td><input class="texto" type="password" id="password" name="password" placeholder="Ingrese su contraseña"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" id="botones">
+                            <input class="myButton" type="submit" id="enviar" name="enviar"
+                                   value="Enviar" onclick="enviarForma(); return false;" />
+                            <!--<button id="enviar" name="enviar">Enviar</button>-->
+                        </td>
+                    </tr>
+                    
+                </table>
+            </form>
+        </section>
+    </section>
+    <footer>
+        si no esta registrado de clic <a href="/Usuario/registro">aquí</a>
+    </footer>
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script>
+        function enviarForma() {
+            if (forma_valida()) {
+                $("#forma").submit();
+            } else
+                alert("Debe llenar los datos de inicio de sesión");
+        }
+        Si ud no está registrado, puede hacerlo <a href="/Alumnos/Registro" >aquí</a>.
+    }
+    function forma_valida() {
+    var txt_login = $("#login").val();
+    var txt_password = $("#password").val();
+    if (txt_login != "" && txt_password != "")
+    return true;
+    else
+    return false;
+    }
+
+
+    </script>
+</body>
+</html>

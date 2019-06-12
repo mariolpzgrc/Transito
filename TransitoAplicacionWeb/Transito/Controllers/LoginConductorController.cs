@@ -19,8 +19,7 @@ namespace Transito.Controllers
             _context = context;
         }
 
-        //POST: api/Login
-        [HttpPost]
+
 
 
     }
