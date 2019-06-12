@@ -40,10 +40,6 @@
                             <!--<button id="enviar" name="enviar">Enviar</button>-->
                         </td>
                     </tr>
-                    <tr>
-                        si no esta registrado de clic
-                        <a href="~/Views/Usuario/Registro">aquí</a>
-                    </tr>
                     
                 </table>
             </form>
@@ -60,7 +56,8 @@
             } else
                 alert("Debe llenar los datos de inicio de sesión");
         }
-
+        Si ud no está registrado, puede hacerlo <a href="/Alumnos/Registro" >aquí</a>.
+    }
     function forma_valida() {
     var txt_login = $("#login").val();
     var txt_password = $("#password").val();

@@ -8,6 +8,7 @@ namespace Transito.Models
         public Usuario()
         {
             Dictamen = new HashSet<Dictamen>();
+            UsuarioBitacoraAcceso = new HashSet<UsuarioBitacoraAcceso>();
         }
 
         public int Idusuario { get; set; }
@@ -20,5 +21,6 @@ namespace Transito.Models
 
         public Cargo IdcargoNavigation { get; set; }
         public ICollection<Dictamen> Dictamen { get; set; }
+        public ICollection<UsuarioBitacoraAcceso> UsuarioBitacoraAcceso { get; set; }
     }
 }

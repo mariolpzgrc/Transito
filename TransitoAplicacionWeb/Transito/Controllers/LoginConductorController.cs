@@ -8,6 +8,20 @@ using Transito.Models;
 
 namespace Transito.Controllers
 {
-    
-    
+    [Route("api/[controller]")]
+    [ApiController]
+    public class LoginConductorController : ControllerBase
+    {
+        private readonly TransitoContext _context;
+
+        public LoginConductorController(TransitoContext context)
+        {
+            _context = context;
+        }
+
+        //POST: api/Login
+        [HttpPost]
+
+
+    }
 }

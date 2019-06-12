@@ -18,10 +18,12 @@ namespace Transito.Models
         public virtual DbSet<Aseguradora> Aseguradora { get; set; }
         public virtual DbSet<Cargo> Cargo { get; set; }
         public virtual DbSet<Conductor> Conductor { get; set; }
+        public virtual DbSet<ConductorBitacoraAcceso> ConductorBitacoraAcceso { get; set; }
         public virtual DbSet<Dictamen> Dictamen { get; set; }
         public virtual DbSet<Evidencia> Evidencia { get; set; }
         public virtual DbSet<Reporte> Reporte { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
+        public virtual DbSet<UsuarioBitacoraAcceso> UsuarioBitacoraAcceso { get; set; }
         public virtual DbSet<Vehiculo> Vehiculo { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -29,7 +31,7 @@ namespace Transito.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=localhost;Database=Transito;UId=adminTransito; PWD=admin;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=localhost;Database=Transito;UID=adminTransito; PWD=admin;Trusted_Connection=True;");
             }
         }
 
@@ -105,6 +107,26 @@ namespace Transito.Models
                     .HasColumnName("telefono")
                     .HasMaxLength(10)
                     .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<ConductorBitacoraAcceso>(entity =>
+            {
+                entity.ToTable("Conductor_BitacoraAcceso");
+
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.Fecha).HasColumnType("datetime");
+
+                entity.Property(e => e.Idconductor).HasColumnName("IDConductor");
+
+                entity.Property(e => e.TokenAcceso)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.IdconductorNavigation)
+                    .WithMany(p => p.ConductorBitacoraAcceso)
+                    .HasForeignKey(d => d.Idconductor)
+                    .HasConstraintName("FK_Conductor_BitacoraAcceso_Conductor");
             });
 
             modelBuilder.Entity<Dictamen>(entity =>
@@ -282,6 +304,28 @@ namespace Transito.Models
                     .HasForeignKey(d => d.Idcargo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Usuario_Cargo");
+            });
+
+            modelBuilder.Entity<UsuarioBitacoraAcceso>(entity =>
+            {
+                entity.ToTable("Usuario_BitacoraAcceso");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.Fecha).HasColumnType("datetime");
+
+                entity.Property(e => e.Idusuario).HasColumnName("IDUsuario");
+
+                entity.Property(e => e.TokenAcceso)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.IdusuarioNavigation)
+                    .WithMany(p => p.UsuarioBitacoraAcceso)
+                    .HasForeignKey(d => d.Idusuario)
+                    .HasConstraintName("FK_Usuario_BitacoraAcceso_Usuario");
             });
 
             modelBuilder.Entity<Vehiculo>(entity =>
