@@ -97,6 +97,23 @@ namespace Transito.Controllers
             return CreatedAtAction("GetConductor", new { id = conductor.Idconductor }, conductor);
         }
 
+        //POST: api/Conductors/Login
+        [HttpPost("Login")]
+        public async Task<IActionResult> Login([FromBody] dynamic credentials)
+        {
+            var telefono = (string)credentials["telefono"];
+            var password = (string)credentials["password"];
+            var conductor = await _context.Conductor.SingleOrDefaultAsync(c => c.Telefono == telefono && c.Password == password);
+
+            if (conductor == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(conductor);
+        }
+
+
         // DELETE: api/Conductors/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteConductor([FromRoute] int id)

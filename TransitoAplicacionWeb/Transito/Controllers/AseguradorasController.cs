@@ -98,6 +98,7 @@ namespace Transito.Controllers
             return CreatedAtAction("GetAseguradora", new { id = aseguradora.Idaseguradora }, aseguradora);
         }
 
+     
         // DELETE: api/Aseguradoras/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAseguradora([FromRoute] int id)
