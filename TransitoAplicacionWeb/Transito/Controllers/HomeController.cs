@@ -14,6 +14,10 @@ namespace Transito.Controllers
         {
             return View();
         }
+        public IActionResult Registro()
+        {
+            return View();
+        }
 
         public IActionResult About()
         {
