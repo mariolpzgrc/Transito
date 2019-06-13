@@ -71,9 +71,9 @@ project.lock.json
 *.pyc
 nupkg/
 
-# Visual Studio Code
+# Visual Studio 201X
 .vscode
-.vs
+.vs/
 # Rider
 .idea
 
