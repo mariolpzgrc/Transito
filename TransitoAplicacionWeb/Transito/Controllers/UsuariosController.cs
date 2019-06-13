@@ -6,11 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Transito.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace Transito.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class UsuariosController : ControllerBase
         {
             
