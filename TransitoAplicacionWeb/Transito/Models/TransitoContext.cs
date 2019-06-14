@@ -10,7 +10,7 @@ namespace Transito.Models
         {
         }
 
-       
+
 
         public virtual DbSet<Aseguradora> Aseguradora { get; set; }
         public virtual DbSet<Cargo> Cargo { get; set; }
@@ -25,11 +25,9 @@ namespace Transito.Models
 
 
         public TransitoContext(DbContextOptions<TransitoContext> options)
-           : base(options)
+            : base(options)
         {
         }
-
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Aseguradora>(entity =>
@@ -208,6 +206,12 @@ namespace Transito.Models
                 entity.Property(e => e.Latitud).HasColumnName("latitud");
 
                 entity.Property(e => e.Longitud).HasColumnName("longitud");
+
+                entity.Property(e => e.Lugar)
+                    .IsRequired()
+                    .HasColumnName("lugar")
+                    .HasMaxLength(250)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.MarcaImplicado)
                     .IsRequired()

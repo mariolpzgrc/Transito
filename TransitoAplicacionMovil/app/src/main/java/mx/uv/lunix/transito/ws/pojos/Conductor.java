@@ -22,6 +22,10 @@ public class Conductor {
         Password = password;
     }
 
+    public Conductor() {
+
+    }
+
     public Integer getIdConductor() {
         return IdConductor;
     }
