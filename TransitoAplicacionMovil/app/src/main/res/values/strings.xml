@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Transito</string>
+    <string name="title_activity_dictamen">DictamenActivity</string>
 </resources>
