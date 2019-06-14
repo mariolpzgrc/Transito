@@ -8,7 +8,7 @@
 <div class="container">
     <div class="row">
 
-        <form method="post" action="/Alumnos/Registro" id="forma"
+        <form method="post" action="" id="forma"
               class="form-horizontal col-lg-offset-3 col-lg-6 col-md-offset-2 col-md-8 col-sm-10 col-sm-offset-1">
             <div class="form-group">
                 <label class="control-label col-sm-4" for="paterno">Apellido Paterno</label>
@@ -54,6 +54,26 @@
                                required="required"
                                aria-describedby="emailHelp"
                                placeholder="Ingrese su nombre">
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-4" for="nombre">Cargo</label>
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        </span>
+                        <select type="text" class="form-control" id="Cargo"
+                                name="genero"
+                                required="required"
+                                placeholder="Ingrese su cargo">
+                            <option value="1">Administrativo</option>
+                            <option value="2">Perito</option>
+                            <option value="3">Soporte</option>
+                            <option value="4">Atencion</option>
+                        </select>
                     </div>
 
                 </div>
@@ -126,12 +146,12 @@
             <script>
                 function validar_enviar() {
 
-                    var correo = $("#correo").val();
+
                     var paterno = $("#paterno").val();
                     var materno = $("#materno").val();
                     var nombre = $("#nombre").val();
-                    var genero = $("#genero").val();
-                    var matricula = $("#matricula").val();
+                    var cargo = $("#cargo").val();
+                    var username = $("#username").val();
                     var password = $("#password").val();
                     var password2 = $("#password2").val();
                     var hayErrores = false;
@@ -148,14 +168,13 @@
                         $("#panelErrores").removeClass("hide");
                     } else {
                         $.ajax({
-                            url: "/Usuario/Registro",
+                            url: api/Usuarios,
                             data: {
-                                "correo": correo,
                                 "paterno": paterno,
                                 "materno": materno,
                                 "nombre": nombre,
-                                "genero": genero,
-                                "matricula": matricula,
+                                "cargo": cargo,
+                                "username": username,
                                 "password": password,
                             },
                             type: 'POST',

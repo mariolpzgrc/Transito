@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "Reportes";
+}
+
+<h2>Reportes</h2>
+<h3>Bienvenido @ViewBag.Nombre</h3>
+
+<h4>Lista de de reportes</h4>
+<div class="container">
+    <div class="row">
+        <table class="table table-bordered table-hover table-responsive table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre Afectado</th>
+                    <th>Aseguradora</th>
+                    <th>Placa</th>
+                    <th>Fecha</th>
+                    <th>Lugar</th>
+                    <th>Estatus</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    
+                    foreach (var reporte in ViewBag.Alumnos)
+                    {
+                        <tr>
+                            <td>@reporte.NombreImplicado</td>
+                            <td>@reporte.AseguradoraImplicada.nombre</td>
+                            <td>@reporte.CorreoElectronico</td>
+                            <td>@reporte.PlacaImplicado</td>
+                            <td>@reporte.FechaSuceso</td>
+                            <td>@reporte.lugar</td>
+                            <td>@reporte.DictamenFolio.Estado</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
