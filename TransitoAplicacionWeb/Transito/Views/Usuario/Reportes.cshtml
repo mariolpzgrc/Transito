@@ -23,12 +23,11 @@
             <tbody>
                 @{
                     
-                    foreach (var reporte in ViewBag.Alumnos)
+                    foreach (var reporte in ViewBag.Reportes)
                     {
                         <tr>
                             <td>@reporte.NombreImplicado</td>
                             <td>@reporte.AseguradoraImplicada.nombre</td>
-                            <td>@reporte.CorreoElectronico</td>
                             <td>@reporte.PlacaImplicado</td>
                             <td>@reporte.FechaSuceso</td>
                             <td>@reporte.lugar</td>

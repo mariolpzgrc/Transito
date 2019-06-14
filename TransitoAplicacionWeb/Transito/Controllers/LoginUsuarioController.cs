@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Transito.Models;
@@ -63,5 +64,51 @@ namespace Transito.Controllers
                 return usuario;
             }
         }
+        public IActionResult Seguimiento()
+        {
+            byte[] arr = new byte[100];
+            if (HttpContext.Session.TryGetValue("SesionUsuario", out arr))
+            {
+                int idSesion = BitConverter.ToInt32(arr, 0);
+                HttpContext.Session.TryGetValue("Usuario", out arr);
+                String nombre = Encoding.ASCII.GetString(arr);
+
+                using (Models.TransitoContext dbSS = new TransitoContext())
+                {
+                    UsuarioBitacoraAcceso registro =
+                        dbSS.UsuarioBitacoraAcceso
+                        .FirstOrDefault(b => b.Id == idSesion);
+                    if (registro != null && registro.Activa == true)
+                    {
+                        Usuario usuario = dbSS.Usuario
+                            .FirstOrDefault(a => a.Idusuario == registro.Idusuario);
+                        ViewBag.idSesion = idSesion;
+                        ViewBag.Nombre = nombre;
+                        ViewBag.Usuario = usuario;
+                        ViewBag.Reportes = listaReportes();
+
+                        return View("Reportes");
+                    }
+                    else
+                        return new RedirectResult("/");
+
+                }
+            }
+            else
+                return new RedirectResult("/");
+        }
+        public List<Reporte> listaReportes()
+        {
+            List<Reporte> lista = null;
+
+            using (Models.TransitoContext dbSS = new TransitoContext())
+            {
+                lista=dbSS.Reporte.ToList();
+            }
+
+                return lista;
+
+        }
     }
+        
 }
