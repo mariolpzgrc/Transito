@@ -8,6 +8,7 @@ namespace Transito.Models
         public int Idreporte { get; set; }
         public double Longitud { get; set; }
         public double Latitud { get; set; }
+        public string Lugar { get; set; }
         public string NombreImplicado { get; set; }
         public int? AseguradoraImplicado { get; set; }
         public string NumeroPolizaImplicado { get; set; }
