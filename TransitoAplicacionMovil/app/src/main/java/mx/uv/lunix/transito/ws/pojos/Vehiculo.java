@@ -21,6 +21,10 @@ public class Vehiculo {
         Idcoductor = idcoductor;
     }
 
+    public Vehiculo() {
+
+    }
+
     public String getPlacas() {
         return Placas;
     }

@@ -9,6 +9,10 @@ public class Aseguradora {
         this.nombre = nombre;
     }
 
+    public Aseguradora() {
+
+    }
+
     public Integer getIdAseguradora() {
         return IdAseguradora;
     }
