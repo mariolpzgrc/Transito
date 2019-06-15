@@ -8,7 +8,7 @@
 <div class="container">
     <div class="row">
 
-        <form method="post" action="" id="forma"
+        <form method="post" a asp-action="Registro " asp-controller="Home" id="forma"
               class="form-horizontal col-lg-offset-3 col-lg-6 col-md-offset-2 col-md-8 col-sm-10 col-sm-offset-1">
             <div class="form-group">
                 <label class="control-label col-sm-4" for="paterno">Apellido Paterno</label>
@@ -161,6 +161,8 @@
                     if (password != password2) {
                         hayErrores = true;
                         errores = "<li>No coincide el password y su comprobación. Favor de verificar"
+                         $("#panelErrores").html(errores);
+                        $("#panelErrores").removeClass("hide");
                     }
 
                     if (hayErrores) {
@@ -170,12 +172,12 @@
                         $.ajax({
                             @Url.Action("Usuarios", "api"),
                             data: {
-                                "paterno": paterno,
-                                "materno": materno,
-                                "nombre": nombre,
-                                "cargo": cargo,
-                                "username": username,
-                                "password": password,
+                                "Nombre": nombre,
+                                "ApellidoPaterno": paterno,
+                                "ApellidoMaterno": materno,
+                                "IdCargo": cargo,
+                                "Username": username,
+                                "Password": password,
                             },
                             type: 'POST',
                             success: function (datos) {
