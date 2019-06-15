@@ -208,6 +208,8 @@ namespace Transito.Models
                     .IsRequired()
                     .HasColumnName("fotos");
 
+                entity.Property(e => e.Idcondutor).HasColumnName("IDCondutor");
+
                 entity.Property(e => e.Idevidencia).HasColumnName("IDEvidencia");
 
                 entity.Property(e => e.Latitud).HasColumnName("latitud");
@@ -259,6 +261,12 @@ namespace Transito.Models
                     .HasForeignKey(d => d.DictamenFolio)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Reporte_Dictamen");
+
+                entity.HasOne(d => d.IdcondutorNavigation)
+                    .WithMany(p => p.Reporte)
+                    .HasForeignKey(d => d.Idcondutor)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Reporte_Conductor");
 
                 entity.HasOne(d => d.IdevidenciaNavigation)
                     .WithMany(p => p.Reporte)

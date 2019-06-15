@@ -11,10 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".DictamenActivity"
-            android:label="@string/title_activity_dictamen"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".DictamenActivity"></activity>
         <activity android:name=".MiPerfilActivity" />
         <activity android:name=".FotosActivity" />
         <activity android:name=".ReporteActivity" />
