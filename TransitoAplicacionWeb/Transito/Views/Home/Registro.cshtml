@@ -170,7 +170,8 @@
                         $("#panelErrores").removeClass("hide");
                     } else {
                         $.ajax({
-                            data: [{
+                            data: {
+
                                 "Nombre": nombre,
                                 "ApellidoPaterno": paterno,
                                 "ApellidoMaterno": materno,
@@ -180,7 +181,7 @@
                                 "idcargoNavigation": null,
                                 "dictamen": [],
                                 "usuarioBitacoraAcceso": []
-                            }],
+                            },
                             type: 'POST',
                             dataType: "Json",
                             url: "api/Usuarios",

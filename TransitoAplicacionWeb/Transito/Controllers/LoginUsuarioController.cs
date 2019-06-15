@@ -64,6 +64,8 @@ namespace Transito.Controllers
                 return usuario;
             }
         }
+        // GET: api/LoginUsuario
+        [HttpGet]
         public IActionResult Seguimiento()
         {
             byte[] arr = new byte[100];
