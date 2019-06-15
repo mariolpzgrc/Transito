@@ -10,7 +10,10 @@ namespace Transito.Models
         {
         }
 
-
+        public TransitoContext(DbContextOptions<TransitoContext> options)
+            : base(options)
+        {
+        }
 
         public virtual DbSet<Aseguradora> Aseguradora { get; set; }
         public virtual DbSet<Cargo> Cargo { get; set; }
@@ -23,19 +26,15 @@ namespace Transito.Models
         public virtual DbSet<UsuarioBitacoraAcceso> UsuarioBitacoraAcceso { get; set; }
         public virtual DbSet<Vehiculo> Vehiculo { get; set; }
 
-
-        public TransitoContext(DbContextOptions<TransitoContext> options)
-            : base(options)
-        {
-        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server = localhost; Database = Transito; UID = adminTransito; PWD = admin; Trusted_Connection = True");
+                optionsBuilder.UseSqlServer("Server=localhost;Database=Transito;UID=adminTransito; PWD=admin;Trusted_Connection=True;");
             }
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Aseguradora>(entity =>
@@ -317,9 +316,7 @@ namespace Transito.Models
             {
                 entity.ToTable("Usuario_BitacoraAcceso");
 
-                entity.Property(e => e.Id)
-                    .HasColumnName("ID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.Fecha).HasColumnType("datetime");
 
