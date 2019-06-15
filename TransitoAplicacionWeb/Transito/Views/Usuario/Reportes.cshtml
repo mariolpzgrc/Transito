@@ -9,6 +9,16 @@
 <h4>Lista de de reportes</h4>
 <div class="container">
     <div class="row">
+        <div class="from-group">
+            <button type="button" class="btn btn-outline-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Ordenar por
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" asp-action="Reportes" asp-route-orden="Fecha"> Fecha </a>
+                <a class="dropdown-item" asp-action="Reportes" asp-route-orden="Lugar"> Lugar </a>
+                <a class="dropdown-item" asp-action="Reportes" asp-route-orden="Estatus"> Estatus </a>
+            </div>
+        </div>
         <table class="table table-bordered table-hover table-responsive table-striped">
             <thead>
                 <tr>
@@ -22,7 +32,7 @@
             </thead>
             <tbody>
                 @{
-                    
+
                     foreach (var reporte in ViewBag.Reportes)
                     {
                         <tr>
