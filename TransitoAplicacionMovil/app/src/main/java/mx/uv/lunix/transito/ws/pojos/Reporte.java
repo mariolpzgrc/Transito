@@ -5,33 +5,40 @@ public class Reporte {
     private Integer Idreporte;
     private double Longitud;
     private double Latitud;
+    private String Lugar;
     private String NombreImplicado;
     private Integer IdAAeguradora;
     private String NumeroPolizaImplicado;
     private String MarcaImplicado;
     private String ModeloImplicado;
     private String ColorImplicado;
+    private String NumeroPlacasImplicado;
     private String FechaSuceso;
     private byte[] Fotos;
     private Integer DictamenFolio;
     private Integer Idevidencia;
+    private Integer IdConductor;
 
-    public Reporte(Integer idreporte, double longitud, double latitud, String nombreImplicado,
+
+    public Reporte(Integer idreporte, double longitud, double latitud, String lugar, String nombreImplicado,
                    Integer idAAeguradora, String numeroPolizaImplicado, String marcaImplicado, String modeloImplicado,
-                   String colorImplicado, String fechaSuceso, byte[] fotos, Integer dictamenFolio, Integer idevidencia) {
+                   String colorImplicado,String numeroPlacasImplicado, String fechaSuceso, byte[] fotos, Integer dictamenFolio, Integer idevidencia, Integer IdConductor) {
         Idreporte = idreporte;
         Longitud = longitud;
         Latitud = latitud;
+        Lugar = lugar;
         NombreImplicado = nombreImplicado;
         IdAAeguradora = idAAeguradora;
         NumeroPolizaImplicado = numeroPolizaImplicado;
         MarcaImplicado = marcaImplicado;
         ModeloImplicado = modeloImplicado;
         ColorImplicado = colorImplicado;
+        NumeroPlacasImplicado = numeroPlacasImplicado;
         FechaSuceso = fechaSuceso;
         Fotos = fotos;
         DictamenFolio = dictamenFolio;
         Idevidencia = idevidencia;
+        IdConductor = IdConductor;
     }
 
     public Integer getIdreporte() {
@@ -56,6 +63,14 @@ public class Reporte {
 
     public void setLatitud(double latitud) {
         Latitud = latitud;
+    }
+
+    public String getLugar() {
+        return Lugar;
+    }
+
+    public void setLugar(String lugar) {
+        Lugar = lugar;
     }
 
     public String getNombreImplicado() {
@@ -106,6 +121,14 @@ public class Reporte {
         ColorImplicado = colorImplicado;
     }
 
+    public String getNumeroPlacasImplicado() {
+        return NumeroPlacasImplicado;
+    }
+
+    public void setNumeroPlacasImplicado(String numeroPlacasImplicado) {
+        NumeroPlacasImplicado = numeroPlacasImplicado;
+    }
+
     public String getFechaSuceso() {
         return FechaSuceso;
     }
@@ -136,5 +159,13 @@ public class Reporte {
 
     public void setIdevidencia(Integer idevidencia) {
         Idevidencia = idevidencia;
+    }
+
+    public Integer getIdConductor() {
+        return IdConductor;
+    }
+
+    public void setIdConductor(Integer idConductor) {
+        IdConductor = idConductor;
     }
 }

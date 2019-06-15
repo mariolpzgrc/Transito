@@ -13,6 +13,8 @@ import java.net.URL;
 
 import mx.uv.lunix.transito.ws.pojos.Aseguradora;
 import mx.uv.lunix.transito.ws.pojos.Conductor;
+import mx.uv.lunix.transito.ws.pojos.Evidencia;
+import mx.uv.lunix.transito.ws.pojos.Reporte;
 import mx.uv.lunix.transito.ws.pojos.Vehiculo;
 
 
@@ -42,12 +44,50 @@ public class HttpUtils {
         return invocarServicioWeb("vehiculoes", "POST", param);
     }
 
-    private static Response registrarAseguradora(Aseguradora aseguradora){
+    public static Response getVehiculos(Conductor conductor){
+        return invocarServicioWeb("vehiculoes/" +conductor.getIdConductor(),"GET", null);
+    }
+
+    public static Response getVehiculo(String id){
+        return invocarServicioWeb("vehiculoes/"+id, "GET", null);
+    }
+
+    public static Response registrarAseguradora(Aseguradora aseguradora){
         String param = String.format("{nomnbre:%s,reporte:%s,vehiculo:%s}", aseguradora.getNombre());
         return  invocarServicioWeb("aseguradoras", "POST", param);
     }
 
+    public static Response crearReporte(Reporte reporte){
+        String params = String.format("{longitud:%s,latiud:%s,lugar:%s, nombreImplicado:%s,aseguradoraImplicado:%s," +
+                "numeroPolizaImplicado:%s,marcaImplicado:%s,modeloImplicado:%s," +
+                "colorImplicado:%s,placaImplicado,fechaSuceso:%s,fotos:%s,dictamenFolio::%s,idevidencia:%s}",
+                reporte.getLongitud(), reporte.getLatitud(), reporte.getLugar(), reporte.getNombreImplicado(), reporte.getIdAAeguradora(),
+                reporte.getNumeroPolizaImplicado(),reporte.getMarcaImplicado(),reporte.getModeloImplicado(),
+                reporte.getColorImplicado(), reporte.getNumeroPlacasImplicado(), reporte.getFechaSuceso(),
+                reporte.getFotos(), reporte.getDictamenFolio(), reporte.getIdevidencia());
+        return invocarServicioWeb("reportes/","POST", params);
+    }
 
+    public  static  Response getReportes(Conductor conductor){
+        return  invocarServicioWeb("/reportes/"+conductor.getIdConductor(), "GET",null);
+    }
+
+    public static Response getReporte(String idReporte){
+        return  invocarServicioWeb("reportes/"+idReporte, "GET", null);
+    }
+
+    public static Response enviarEvidencias(Evidencia evidencia){
+        String params = String.format("{fotoDerecha1:%s,fotoDerecha2:%s,fotoIzquierda1:%s,fotoIzquierda2:%s," +
+                "fotoFrontal1:%s,fotoFrontal2:%s,fotoTrasera1:%s,fotoTrasera2:%s}",
+                evidencia.getFotoDerecha1(), evidencia.getFotoDerecha2(), evidencia.getFotoIzquierda1(),
+                evidencia.getFotoIzquierda2(), evidencia.getFotoFrontal1(), evidencia.getFotoFrontal2(),
+                evidencia.getFotoTrasera1(), evidencia.getFotoTrasera2());
+        return invocarServicioWeb("evidencias/", "POST", params);
+    }
+
+    public static Response getDictamenten(Reporte reporte){
+        return invocarServicioWeb("dictamen/"+reporte.getIdreporte(), "GET", null);
+    }
 
     private  static  Response invocarServicioWeb(String url, String tipoInvocacion, String parametros){
         HttpURLConnection c = null;
@@ -109,8 +149,6 @@ public class HttpUtils {
                 c.disconnect();
             }
         }
-
         return res;
     }
-
 }

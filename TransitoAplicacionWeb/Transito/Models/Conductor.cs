@@ -8,6 +8,7 @@ namespace Transito.Models
         public Conductor()
         {
             ConductorBitacoraAcceso = new HashSet<ConductorBitacoraAcceso>();
+            Reporte = new HashSet<Reporte>();
             Vehiculo = new HashSet<Vehiculo>();
         }
 
@@ -21,6 +22,7 @@ namespace Transito.Models
         public string Password { get; set; }
 
         public ICollection<ConductorBitacoraAcceso> ConductorBitacoraAcceso { get; set; }
+        public ICollection<Reporte> Reporte { get; set; }
         public ICollection<Vehiculo> Vehiculo { get; set; }
     }
 }

@@ -155,7 +155,11 @@ public class RegistroActivity extends AppCompatActivity {
     }
 
     private void resultadoRegistro(){
-
+        if(resws != null && !resws.isError() && resws.getResult() != null) {
+           mostrarAlertDialog("Registro correcto","Se ha guardado correctamente el conductor");
+        } else {
+            mostrarAlertDialog("Error", resws.getResult());
+        }
     }
 
 }

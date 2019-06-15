@@ -20,9 +20,11 @@ namespace Transito.Models
         public byte[] Fotos { get; set; }
         public int DictamenFolio { get; set; }
         public int Idevidencia { get; set; }
+        public int Idcondutor { get; set; }
 
         public Aseguradora AseguradoraImplicadoNavigation { get; set; }
         public Dictamen DictamenFolioNavigation { get; set; }
+        public Conductor IdcondutorNavigation { get; set; }
         public Evidencia IdevidenciaNavigation { get; set; }
     }
 }
