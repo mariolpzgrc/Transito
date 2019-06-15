@@ -168,7 +168,7 @@
                         $("#panelErrores").removeClass("hide");
                     } else {
                         $.ajax({
-                            url: api/Usuarios,
+                            @Url.Action("Usuarios", "api"),
                             data: {
                                 "paterno": paterno,
                                 "materno": materno,

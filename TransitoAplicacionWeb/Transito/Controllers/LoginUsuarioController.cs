@@ -38,7 +38,7 @@ namespace Transito.Controllers
 
 
 
-                }return new RedirectResult("Home/Registro");
+                }return new RedirectToActionResult("Registro", "Home","Home/Registro");
             }else
 
 

@@ -83,24 +83,6 @@ namespace Transito.Controllers
 
                 return NoContent();
             }
-        public void Registro(String username,
-        String paterno, String materno, String nombre,
-        int cargo, String password)
-        {
-            
-
-                Usuario usuario = new Usuario();
-                usuario.ApellidoPaterno = paterno;
-                usuario.Idcargo  = cargo;
-                usuario.ApellidoMaterno = materno;
-                usuario.Username = username;
-                usuario.Nombre = nombre;
-                usuario.Password = password;
-               
-                PostUsuario(usuario);
-
-            
-        }
         // POST: api/Usuarios
         [HttpPost]
             public async Task<IActionResult> PostUsuario([FromBody] Usuario usuario)
