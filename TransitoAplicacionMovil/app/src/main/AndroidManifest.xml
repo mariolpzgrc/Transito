@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DictamenActivity"></activity>
+        <activity android:name=".VerDictamenActivity"></activity>
+        <activity android:name=".DictamenActivity" />
         <activity android:name=".MiPerfilActivity" />
         <activity android:name=".FotosActivity" />
         <activity android:name=".ReporteActivity" />

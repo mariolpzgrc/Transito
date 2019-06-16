@@ -14,15 +14,13 @@ public class Reporte {
     private String ColorImplicado;
     private String NumeroPlacasImplicado;
     private String FechaSuceso;
-    private byte[] Fotos;
-    private Integer DictamenFolio;
     private Integer Idevidencia;
     private Integer IdConductor;
 
 
     public Reporte(Integer idreporte, double longitud, double latitud, String lugar, String nombreImplicado,
                    Integer idAAeguradora, String numeroPolizaImplicado, String marcaImplicado, String modeloImplicado,
-                   String colorImplicado,String numeroPlacasImplicado, String fechaSuceso, byte[] fotos, Integer dictamenFolio, Integer idevidencia, Integer IdConductor) {
+                   String colorImplicado,String numeroPlacasImplicado, String fechaSuceso, Integer idevidencia, Integer IdConductor) {
         Idreporte = idreporte;
         Longitud = longitud;
         Latitud = latitud;
@@ -35,10 +33,12 @@ public class Reporte {
         ColorImplicado = colorImplicado;
         NumeroPlacasImplicado = numeroPlacasImplicado;
         FechaSuceso = fechaSuceso;
-        Fotos = fotos;
-        DictamenFolio = dictamenFolio;
         Idevidencia = idevidencia;
         IdConductor = IdConductor;
+    }
+
+    public Reporte() {
+
     }
 
     public Integer getIdreporte() {
@@ -135,22 +135,6 @@ public class Reporte {
 
     public void setFechaSuceso(String fechaSuceso) {
         FechaSuceso = fechaSuceso;
-    }
-
-    public byte[] getFotos() {
-        return Fotos;
-    }
-
-    public void setFotos(byte[] fotos) {
-        Fotos = fotos;
-    }
-
-    public Integer getDictamenFolio() {
-        return DictamenFolio;
-    }
-
-    public void setDictamenFolio(Integer dictamenFolio) {
-        DictamenFolio = dictamenFolio;
     }
 
     public Integer getIdevidencia() {
