@@ -7,13 +7,15 @@ public class Dictamen {
     private  String fechaDictamen;
     private String estado;
     private Integer IdUsuario;
+    private Integer Idreporte;
 
-    public Dictamen(Integer folio, String descripcion, String fechaDictamen, String estado, Integer idUsuario) {
+    public Dictamen(Integer folio, String descripcion, String fechaDictamen, String estado, Integer idUsuario, Integer idreporte) {
         Folio = folio;
         Descripcion = descripcion;
         this.fechaDictamen = fechaDictamen;
         this.estado = estado;
         IdUsuario = idUsuario;
+        Idreporte = idreporte;
     }
 
     public Integer getFolio() {
@@ -54,5 +56,13 @@ public class Dictamen {
 
     public void setIdUsuario(Integer idUsuario) {
         IdUsuario = idUsuario;
+    }
+
+    public Integer getIdreporte() {
+        return Idreporte;
+    }
+
+    public void setIdreporte(Integer idreporte) {
+        Idreporte = idreporte;
     }
 }

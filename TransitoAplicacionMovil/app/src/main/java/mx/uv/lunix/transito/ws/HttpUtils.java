@@ -2,7 +2,11 @@ package mx.uv.lunix.transito.ws;
 
 
 
+import android.graphics.Bitmap;
+import android.util.Log;
+
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,6 +14,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.Arrays;
 
 import mx.uv.lunix.transito.ws.pojos.Aseguradora;
 import mx.uv.lunix.transito.ws.pojos.Conductor;
@@ -87,6 +92,94 @@ public class HttpUtils {
 
     public static Response getDictamenten(Reporte reporte){
         return invocarServicioWeb("dictamen/"+reporte.getIdreporte(), "GET", null);
+    }
+
+    public static Response subirFoto(String id, Bitmap fotDer1, Bitmap fotDer2, Bitmap fotIzq1, Bitmap fotIzq2,
+                                     Bitmap fotFron1, Bitmap fotFron2, Bitmap fotTra1, Bitmap fotTra2) {
+        Response res = new Response();
+        HttpURLConnection c = null;
+        DataOutputStream outputStream = null;
+
+        try {
+            URL url = new URL(BASE_URL+"api/evidencias/");
+            c = (HttpURLConnection) url.openConnection();
+            c.setDoInput(true);
+            c.setDoOutput(true);
+            c.setUseCaches(false);
+            c.setRequestMethod("POST");
+            c.setRequestProperty("Connection", "Keep-Alive");
+            c.setRequestProperty("User-Agent", "Android Multipart HTTP Client 1.0");
+            c.setRequestProperty("Content-Type", "application/octet-stream;");
+            //----------MANDAR BYTES A WS-------------//
+            outputStream = new DataOutputStream(c.getOutputStream());
+            ByteArrayOutputStream bitmapOutputStream = new ByteArrayOutputStream();
+            fotDer1.compress(Bitmap.CompressFormat.JPEG, 100, bitmapOutputStream);
+            fotDer2.compress(Bitmap.CompressFormat.JPEG, 100, bitmapOutputStream);
+            fotIzq1.compress(Bitmap.CompressFormat.JPEG, 100, bitmapOutputStream);
+            fotIzq2.compress(Bitmap.CompressFormat.JPEG, 100, bitmapOutputStream);
+            fotFron1.compress(Bitmap.CompressFormat.JPEG, 100, bitmapOutputStream);
+            fotFron2.compress(Bitmap.CompressFormat.JPEG, 100, bitmapOutputStream);
+            fotTra1.compress(Bitmap.CompressFormat.JPEG, 100, bitmapOutputStream);
+            fotTra2.compress(Bitmap.CompressFormat.JPEG, 100, bitmapOutputStream);
+
+            byte original[] = bitmapOutputStream.toByteArray();
+
+            int blockbytes, totalbytes, bufferSize;
+            byte[] buffer;
+            int maxBufferSize = 1 * 1024 * 1024;
+
+            int lastbyte = 0;
+            totalbytes = original.length;
+            Log.v("totalbytes",""+totalbytes);
+            bufferSize = Math.min(totalbytes, maxBufferSize);
+            buffer = Arrays.copyOfRange(original,lastbyte,bufferSize);
+            Log.v("copyFromTo","0,"+bufferSize);
+            blockbytes = buffer.length;
+            Log.v("blockbytes",""+blockbytes);
+            while (totalbytes > 0) {
+                outputStream.write(buffer, 0, bufferSize);
+                totalbytes = totalbytes - blockbytes;
+                lastbyte += blockbytes;
+                bufferSize = Math.min(totalbytes, maxBufferSize);
+                buffer = Arrays.copyOfRange(original,lastbyte,lastbyte+bufferSize);
+                blockbytes = buffer.length;
+                Log.v("copyFromTo",""+lastbyte+","+bufferSize);
+                Log.v("blockbytes",""+blockbytes);
+            }
+            bitmapOutputStream.close();
+            outputStream.flush();
+            outputStream.close();
+
+            //----------LEER RESPUESTA DEL WS-----------//
+
+            res.setStatus(c.getResponseCode());
+            if(res.getStatus()!=200 && res.getStatus()!=201){
+                res.setError(true);
+            }
+            if(c.getInputStream()!=null) {
+                BufferedReader br = new BufferedReader(new InputStreamReader(c.getInputStream()));
+                StringBuilder sb = new StringBuilder();
+                String line;
+                while ((line = br.readLine()) != null) {
+                    sb.append(line+"\n");
+                }
+                br.close();
+                res.setResult(sb.toString());
+            }
+        } catch (MalformedURLException ex) {
+            ex.printStackTrace();
+            res.setError(true);
+            res.setResult(ex.getMessage());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            res.setError(true);
+            res.setResult(ex.getMessage());
+        } finally {
+            if (c != null) {
+                c.disconnect();
+            }
+        }
+        return res;
     }
 
     private  static  Response invocarServicioWeb(String url, String tipoInvocacion, String parametros){

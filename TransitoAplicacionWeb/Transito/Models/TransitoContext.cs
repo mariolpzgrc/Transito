@@ -150,7 +150,15 @@ namespace Transito.Models
                     .HasColumnName("fechaDictamen")
                     .HasColumnType("date");
 
+                entity.Property(e => e.Idreporte).HasColumnName("IDReporte");
+
                 entity.Property(e => e.Idusuario).HasColumnName("IDUsuario");
+
+                entity.HasOne(d => d.IdreporteNavigation)
+                    .WithMany(p => p.Dictamen)
+                    .HasForeignKey(d => d.Idreporte)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Dictamen_Reporte");
 
                 entity.HasOne(d => d.IdusuarioNavigation)
                     .WithMany(p => p.Dictamen)
@@ -198,15 +206,9 @@ namespace Transito.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.DictamenFolio).HasColumnName("dictamen_folio");
-
                 entity.Property(e => e.FechaSuceso)
                     .HasColumnName("fechaSuceso")
                     .HasColumnType("date");
-
-                entity.Property(e => e.Fotos)
-                    .IsRequired()
-                    .HasColumnName("fotos");
 
                 entity.Property(e => e.Idcondutor).HasColumnName("IDCondutor");
 
@@ -255,12 +257,6 @@ namespace Transito.Models
                     .WithMany(p => p.Reporte)
                     .HasForeignKey(d => d.AseguradoraImplicado)
                     .HasConstraintName("FK_Reporte_Aguradora");
-
-                entity.HasOne(d => d.DictamenFolioNavigation)
-                    .WithMany(p => p.Reporte)
-                    .HasForeignKey(d => d.DictamenFolio)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Reporte_Dictamen");
 
                 entity.HasOne(d => d.IdcondutorNavigation)
                     .WithMany(p => p.Reporte)
