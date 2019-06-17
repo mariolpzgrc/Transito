@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Transito.Models;
 
 namespace Transito.Controllers
@@ -36,9 +37,16 @@ namespace Transito.Controllers
                     dbss.UsuarioBitacoraAcceso.Add(usuariobitacora);
                     dbss.SaveChanges();
 
+                    byte[] arr = BitConverter.GetBytes(usuariobitacora.Id);
+                    HttpContext.Session.Set("SesionUsuario", arr);
+                    HttpContext.Session.Set("Usuario",
+                     Encoding.ASCII
+                     .GetBytes($"{usuario.Nombre}"));
 
 
-                }return new RedirectToActionResult("Reportes", "Home","Home/Reportes");
+
+                }
+                return new RedirectResult("/LoginUsuario/Seguimiento");
             }else
 
 
@@ -87,7 +95,7 @@ namespace Transito.Controllers
                         ViewBag.idSesion = idSesion;
                         ViewBag.Nombre = nombre;
                         ViewBag.Usuario = usuario;
-                       
+                        ViewBag.Reportes = listaReportes(registro.Id);
 
                         return View("Reportes");
                     }
@@ -99,7 +107,25 @@ namespace Transito.Controllers
             else
                 return new RedirectResult("/");
         }
-       
+        public List<Reporte> listaReportes(int idSesion)
+        {
+            List<Reporte> lista = null;
+
+            using (Models.TransitoContext dbSS = new TransitoContext())
+            {
+                UsuarioBitacoraAcceso registro =
+                   dbSS.UsuarioBitacoraAcceso
+                   .FirstOrDefault(b => b.Id == idSesion);
+                if (registro != null && registro.Activa == true)
+                {
+                    lista = dbSS.Reporte.OrderBy(a => a.Lugar).ToList();
+                }
+            }
+
+            return lista;
+
+        }
+
     }
-        
+
 }

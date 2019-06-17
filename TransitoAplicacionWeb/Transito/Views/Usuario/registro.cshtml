@@ -9,7 +9,7 @@
 <div class="container">
     <div class="row">
 
-        <form method="post" action="#" id="forma"
+        <form id="forma"
               class="form-horizontal col-lg-offset-3 col-lg-6 col-md-offset-2 col-md-8 col-sm-10 col-sm-offset-1">
             <div class="form-group">
                 <label class="control-label col-sm-4" for="correo">Nombre</label>
@@ -18,7 +18,7 @@
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                         </span>
-                        <input type="text" class="form-control" id="correo"
+                        <input type="text" class="form-control" id="nombre"
                                name="nombre"
                                required="required"
                                aria-describedby="emailHelp"
@@ -135,7 +135,7 @@
                             <p>El usuario fue agregado de manera correcta. A continuación podrá continuar con el proceso...</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            <button type="button" id="btnCerrarModalUsuario" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 
                         </div>
                     </div><!-- /.modal-content -->
@@ -150,7 +150,7 @@
             {
     <script>
         $(document).ready( () => {
-            function validar_enviar() {
+            function validar_enviar() {                
                 var nombre = $("#nombre").val();
                 var paterno = $("#paterno").val();
                 var materno = $("#materno").val();
@@ -170,34 +170,39 @@
                 if (hayErrores) {
                     $("#panelErrores").html(errores);
                     $("#panelErrores").removeClass("hide");
-                } else {
+                } else {    
+                    var cadenaDatos = {
+                        nombre: nombre,
+                        apellidoPaterno: paterno,
+                        apellidoMaterno: materno,
+                        idcargo: cargo,
+                        username: username,
+                        password: password
+                    }
                     $.ajax({
-                        data: JSON.stringify(jsonObject),
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
-                        url: @Url.Action("Registro", "Usuarios"),
-                        data: {
-                            "Nombre": nombre,
-                            "ApellidoPaterno": paterno,
-                            "ApellidoMaterno": materno,
-                            "Idcargo": cargo,
-                            "Username": username,
-                            "Password": password,
-                        },
+                        url: "../Usuarios/registrarUsuario",
+                        data: JSON.stringify(cadenaDatos),
                         type: 'POST',
-                        success: function (datos) {
-                            var resp = jQuery.parseJSON(datos);
-                            if (resp.correcto === "si") {
-                                $("#dialogoRegistroCorrecto").modal("show");
+                        success: function (datos) {                            
+                            if (datos.idusuario > 0) {
+                                $("#dialogoRegistroCorrecto").modal("show");                                
                             }
-                    });
-                     $("#forma").submit();
+                        }
+                    });                     
                 }
             }
 
-            $("#regButton").click(() => {
+            $("#forma").submit(function (evento) {
+                evento.preventDefault();
                 validar_enviar();
             });
+
+            $("#btnCerrarModalUsuario").click(function () {
+                document.location.href = "../Home";        
+            });
+
         });
                 
     </script>
