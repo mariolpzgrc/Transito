@@ -118,7 +118,7 @@ namespace Transito.Controllers
                    .FirstOrDefault(b => b.Id == idSesion);
                 if (registro != null && registro.Activa == true)
                 {
-                    lista = dbSS.Reporte.OrderBy(a => a.Lugar).ToList();
+                    lista = dbSS.Reporte.ToList();
                 }
             }
 
