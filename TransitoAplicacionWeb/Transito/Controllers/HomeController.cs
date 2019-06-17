@@ -18,7 +18,11 @@ namespace Transito.Controllers
         {
             return View();
         }
-
+        public IActionResult Reportes()
+        {
+            ViewBag.Reportes = listaReportes();
+            return View();
+        }
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
@@ -43,5 +47,18 @@ namespace Transito.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        public List<Reporte> listaReportes()
+        {
+            List<Reporte> lista = null;
+
+            using (Models.TransitoContext dbSS = new TransitoContext())
+            {
+                lista = dbSS.Reporte.ToList();
+            }
+
+            return lista;
+
+        }
     }
+
 }
