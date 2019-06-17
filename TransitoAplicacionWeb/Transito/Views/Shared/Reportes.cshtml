@@ -1,4 +1,39 @@
-﻿
+﻿@section Scripts{
+    <script>
+        function verDetalles(idReporte, nombreimplicado, aseguradoraImplicada, lugar, numerodepoliza, marca, color, placa) {
+            $("#modalReporte").modal("show");
+            $('#nombreImplicado').val(nombreimplicado);
+            $('#Aseguradora').val(aseguradoraImplicada);
+            $('#lugar').val(lugar);
+            $('#numPoliza').val(numerodepoliza);
+            $('#marca').val(marca);
+            $('#color').val(color);
+            $('#placa').val(placa);
+            $('#idReporte').val(idReporte);
+        };
+
+        function dictaminarReporte() {
+            var id = $('#idReporte').val();
+            var dictamenmodal = $('#dictamen').val();
+            var fecha = new Date();
+            var datos = JSON.stringify({
+                idReporte: id, Descripcion: dictamenmodal, FechaDictamen: fecha, Estado: 'veracruz', Idusuario:'@ViewBag.idUsuario' });
+
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("PostDictamen","Dictamen")",
+                data: datos,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: (data) => {
+                    alert(result.d);
+                }
+            });
+
+        };
+    </script>
+}
+
 @{
     ViewData["Title"] = "Reportes";
 }
@@ -9,51 +44,141 @@
 <h4>Lista de de reportes</h4>
 <div class="container">
     <div class="row">
-        <div class="from-group">
-            <button type="button" class="btn btn-outline-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Ordenar por
+
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                ordenar por
             </button>
-            <div class="dropdown-menu">
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" asp-action="Reportes" asp-route-orden="Fecha"> Fecha </a>
                 <a class="dropdown-item" asp-action="Reportes" asp-route-orden="Lugar"> Lugar </a>
                 <a class="dropdown-item" asp-action="Reportes" asp-route-orden="Estatus"> Estatus </a>
             </div>
         </div>
-        <table class="table table-bordered table-hover table-responsive table-striped">
+        <table class="table table-bordered table-hover table-responsive table-striped" id="tablita">
             <thead>
                 <tr>
                     <th>Nombre Afectado</th>
                     <th>Aseguradora</th>
                     <th>Placa</th>
-                    <th>Fecha</th>
+                    <th>Fecha </th>
                     <th>Lugar</th>
-                    <th>Estatus</th>
+                    <th>Estatus</th>>
                 </tr>
             </thead>
             <tbody>
-                @{
-
-                    foreach (var reporte in ViewBag.Reportes)
-                    {
-                        <tr>
-                            <td>@reporte.NombreImplicado</td>
-                            <td>@reporte.AseguradoraImplicada.nombre</td>
-                            <td>@reporte.PlacaImplicado</td>
-                            <td>@reporte.FechaSuceso</td>
-                            <td>@reporte.lugar</td>
-                            <td>@reporte.DictamenFolio.Estado</td>
-                        </tr>
-                    }
+                @foreach (var reporte in ViewBag.Reportes)
+                {
+                    <tr onclick="verDetalles('@reporte.Idreporte','@reporte.NombreImplicado','@reporte.AseguradoraImplicado','@reporte.Lugar', '@reporte.NumeroPolizaImplicado', '@reporte.MarcaImplicado', '@reporte.ColorImplicado', '@reporte.PlacaImplicado');">
+                        <td>@reporte.NombreImplicado</td>
+                        <td>@reporte.AseguradoraImplicado</td>
+                        <td>@reporte.PlacaImplicado</td>
+                        <td>@reporte.FechaSuceso</td>
+                        <td>@reporte.Lugar</td>
+                        <td>@reporte.</td>
+                    </tr>
                 }
             </tbody>
         </table>
-        <div class="col-md-offset-4">
-            <button class="btn btn-primary" onclick="verDetalles()" id="dictaminarButton">Ver Detalles</button>
-        </div>
-        <script>
-            function verDetalles(){
+        <div class="modal" id="modalReporte" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title">Reporte detalles</h1>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input id="idReporte" hidden />
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <h2>Nombre implicado</h2>
+                                </div>
+                                <div class="col">
+                                    <input disabled id="nombreImplicado" />
 
-            }
-        </script>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h2>Aseguradora implicada</h2>
+                                </div>
+                                <div class="col">
+                                    <input disabled id="Aseguradora" />
+                                </div>
+
+
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h2>Lugar</h2>
+                                </div>
+                                <div class="col">
+                                    <input disabled id="lugar" />
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h2>Numero de poliza</h2>
+                                </div>
+                                <div class="col">
+                                    <input disabled id="numPoliza" />
+
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h2>Marca</h2>
+                                </div>
+                                <div class="col">
+                                    <input disabled id="marca" />
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h2>Color</h2>
+                                </div>
+                                <div class="col">
+                                    <input disabled id="color" />
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h2>Placa</h2>
+                                </div>
+                                <div class="col">
+                                    <input disabled id="placa" />
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h2> Dictamen</h2>
+                                </div>
+                                <div class="col">
+                                    <textarea id="dictamen">
+                                    
+                                </textarea>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="dictaminarReporte();">Dictaminar reporte</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<script type="text/javascript" src="./js/jquery-latest.js"></script>
+            <script type="text/javascript" src="./js/jquery.tablesorter.min.js"></script>*@
     </div>
 </div>

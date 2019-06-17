@@ -95,6 +95,7 @@ namespace Transito.Controllers
                         ViewBag.idSesion = idSesion;
                         ViewBag.Nombre = nombre;
                         ViewBag.Usuario = usuario;
+                        ViewBag.idUsuario = registro.Idusuario;
                         ViewBag.Reportes = listaReportes(registro.Id);
 
                         return View("Reportes");
