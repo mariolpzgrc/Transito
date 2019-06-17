@@ -31,7 +31,7 @@ namespace Transito.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=tcp:desapps.database.windows.net,1433;Database=Transito;UID=lunix@desapps; PWD=DesApps2019;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+                optionsBuilder.UseSqlServer("Server=localhost;Database=Transito;UID=adminTransito; PWD=admin;Trusted_Connection=True;");
             }
         }
 

@@ -46,7 +46,7 @@ public class RegistrarVehiculoActivity extends AppCompatActivity {
 
     public void cancelar(View v){finish();}
 
-    private void registrarVehiculo(View view){
+    private void registrarVehiculo(View v){
         if(validar() && isOnline()){
             nuevo = new Vehiculo();
             nueva = new Aseguradora();

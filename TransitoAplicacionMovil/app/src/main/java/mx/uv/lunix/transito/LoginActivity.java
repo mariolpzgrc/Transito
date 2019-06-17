@@ -105,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         } else {
-            mostrarAlertDialog("Error", resws.getResult());
+            mostrarAlertDialog("Error", "Número celular y/o contraseña incorrectas.");
         }
     }
 }
