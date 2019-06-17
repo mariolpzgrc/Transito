@@ -10,11 +10,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ResourceCursorTreeAdapter;
+import android.widget.Toast;
 
-import com.google.gson.Gson;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.android.volley.Response;
+
+import java.sql.SQLOutput;
+import java.util.HashMap;
+import java.util.Map;
 
 import mx.uv.lunix.transito.ws.HttpUtils;
-import mx.uv.lunix.transito.ws.Response;
 import mx.uv.lunix.transito.ws.pojos.Conductor;
 
 public class RegistroActivity extends AppCompatActivity {
@@ -28,9 +39,12 @@ public class RegistroActivity extends AppCompatActivity {
     private EditText numerocelular;
     private EditText contrasena;
     private Response resws;
+    private RequestQueue queue;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        queue = Volley.newRequestQueue(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
         nombre = (EditText) findViewById(R.id.nombre);
@@ -40,24 +54,71 @@ public class RegistroActivity extends AppCompatActivity {
         numerolicencia = (EditText) findViewById(R.id.licencia);
         numerocelular = (EditText) findViewById(R.id.telefono);
         contrasena = (EditText) findViewById(R.id.password);
+
     }
 
     public void cancelar(View v){finish();}
 
     public void registrarme(View view){
-        if(validar() && isOnline()){
-            nuevo = new Conductor();
-            nuevo.setNombre(nombre.getText().toString());
-            nuevo.setApellidoMaterno(apellidopaterno.getText().toString());
-            nuevo.setApellidoMaterno(apellidoMaterno.getText().toString());
-            nuevo.setFechaNacimiento(fechanacimiento.getText().toString());
-            nuevo.setNumeroLicencia(numerolicencia.getText().toString());
-            nuevo.setTelefono(numerocelular.getText().toString());
-            nuevo.setPassword(contrasena.getText().toString());
-            WSPOSTRegistroConductorTask task = new WSPOSTRegistroConductorTask();
-            task.execute(nuevo);
 
+        nuevo = new Conductor();
+        nuevo.setNombre(nombre.getText().toString());
+        nuevo.setApellidoMaterno(apellidopaterno.getText().toString());
+        nuevo.setApellidoMaterno(apellidoMaterno.getText().toString());
+        nuevo.setFechaNacimiento(fechanacimiento.getText().toString());
+        nuevo.setNumeroLicencia(numerolicencia.getText().toString());
+        nuevo.setTelefono(numerocelular.getText().toString());
+        nuevo.setPassword(contrasena.getText().toString());
+
+        String url = "https://transitodesapps.azurewebsites.net/api/Conductors/";
+        if(validar()) {
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    Toast.makeText(RegistroActivity.this, "Conductor se registro correctamente", Toast.LENGTH_SHORT).show();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(RegistroActivity.this, "Hubo un error", Toast.LENGTH_SHORT).show();
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<String, String>();
+
+                    System.out.println(nuevo.getNombre());
+                    System.out.println(nuevo.getApellidoPaterno());
+                    System.out.println(nuevo.getApellidoMaterno());
+                    System.out.println(nuevo.getFechaNacimiento());
+                    System.out.println(nuevo.getNumeroLicencia());
+                    System.out.println(nuevo.getTelefono());
+                    System.out.println(nuevo.getPassword());
+
+                    params.put("idconductor", "100");
+                    params.put("nombre", nuevo.getNombre());
+                    params.put("apellidoPaterno", nuevo.getApellidoPaterno());
+                    params.put("apellidoMaterno", nuevo.getApellidoMaterno());
+                    params.put("fechaNacimiento", nuevo.getFechaNacimiento().toString());
+                    params.put("numeroLicencia", nuevo.getNumeroLicencia());
+                    params.put("telefono", nuevo.getTelefono());
+                    params.put("password", nuevo.getPassword());
+                    params.put("conductorBitacoraAcceso", "hola");
+                    params.put("reporte", null);
+                    params.put("vehiculo", null);
+
+
+
+                    return params;
+                }
+            };
+
+            queue.add(stringRequest);
         }
+
+
+
+
     }
 
     private boolean validar(){
@@ -94,72 +155,6 @@ public class RegistroActivity extends AppCompatActivity {
         return ok;
     }
 
-    private boolean isOnline() {
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        boolean online = (cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected());
-        if(!online) {
-            mostrarAlertDialog("Sin conexión", "No se encontró ninguna conexión a Internet, conectase a alguna red para continuar utilizando la aplicación");
-        }
-        return online;
-    }
 
-    private void mostrarAlertDialog(String titulo, String mensaje) {
-        AlertDialog dialog = new AlertDialog.Builder(RegistroActivity.this).create();
-        dialog.setTitle(titulo);
-        dialog.setMessage(mensaje);
-        dialog.setButton(AlertDialog.BUTTON_POSITIVE, "Aceptar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        dialog.show();
-    }
-    private class WSPOSTLoginTask extends AsyncTask<String, String, String> {
-        @Override
-        protected String doInBackground(String... strings) {
-            resws = HttpUtils.login(strings[0], strings[1]);
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-            resultadoEntrar();
-        }
-    }
-    private void resultadoEntrar() {
-        if (resws != null && !resws.isError() && resws.getResult() != null) {
-            if (resws.getResult().contains("idconductor")) {
-                Intent intent = new Intent(RegistroActivity.this, PrincipalPaginaActivity.class);
-                intent.putExtra("json_conductor", resws.getResult());
-                startActivity(intent);
-            }
-        } else {
-            mostrarAlertDialog("Error", "Número celular y/o contraseña incorrectas.");
-        }
-    }
-
-    private class WSPOSTRegistroConductorTask extends AsyncTask<Object, String, String> {
-        @Override
-        protected String doInBackground(Object... objects) {
-            resws = HttpUtils.registroConductor((Conductor)objects[0]);
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            resultadoRegistro();
-        }
-    }
-
-    private void resultadoRegistro(){
-        if(resws != null && !resws.isError() && resws.getResult() != null) {
-           mostrarAlertDialog("Registro correcto","Se ha guardado correctamente el conductor");
-        } else {
-            mostrarAlertDialog("Error", resws.getResult());
-        }
-    }
 
 }

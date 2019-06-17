@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import mx.uv.lunix.transito.ws.HttpUtils;
-import mx.uv.lunix.transito.ws.Response;
+import mx.uv.lunix.transito.ws.Responses;
 import mx.uv.lunix.transito.ws.pojos.Aseguradora;
 import mx.uv.lunix.transito.ws.pojos.Vehiculo;
 
@@ -27,7 +27,7 @@ public class RegistrarVehiculoActivity extends AppCompatActivity {
     private EditText anio;
     private EditText numeropoliza;
     private EditText aseguradora;
-    private Response resws;
+    private Responses resws;
     private Integer idConductor;
 
     @Override

@@ -24,6 +24,10 @@ public class Evidencia {
         FotoTrasera2 = fotoTrasera2;
     }
 
+    public Evidencia() {
+
+    }
+
     public Integer getIdevidencia() {
         return Idevidencia;
     }

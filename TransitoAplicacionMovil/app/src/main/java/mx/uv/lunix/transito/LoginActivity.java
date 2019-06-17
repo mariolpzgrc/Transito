@@ -13,14 +13,15 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import mx.uv.lunix.transito.ws.HttpUtils;
-import mx.uv.lunix.transito.ws.Response;
+import mx.uv.lunix.transito.ws.Responses;
+
 
 public class LoginActivity extends AppCompatActivity {
     private Button iniciarSesion;
     private Button registrase;
     private String telefono;
     private String password;
-    private Response resws;
+    private Responses resws;
 
     private EditText txt_num;
     private EditText txt_con;
@@ -40,6 +41,8 @@ public class LoginActivity extends AppCompatActivity {
     public void registrarse(View view){
         startActivity(new Intent(LoginActivity.this, RegistroActivity.class));
     }
+
+
 
     public void entrar(View v){
         if(validar() && isOnline()){
@@ -99,13 +102,16 @@ public class LoginActivity extends AppCompatActivity {
 
     private void resultadoEntrar() {
         if (resws != null && !resws.isError() && resws.getResult() != null) {
-            if (resws.getResult().contains("idConductor")) {
+            if (resws.getResult().contains("idconductor")) {
                 Intent intent = new Intent(LoginActivity.this, PrincipalPaginaActivity.class);
                 intent.putExtra("json_conductor", resws.getResult());
                 startActivity(intent);
             }
+            else{
+                mostrarAlertDialog("Error", "al pasar a la otra pantalla");
+            }
         } else {
-            mostrarAlertDialog("Error", "Número celular y/o contraseña incorrectas.");
+            mostrarAlertDialog("Error", "Usuario  y/o contraseña estan incorrectas");
         }
     }
 }

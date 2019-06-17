@@ -1,6 +1,5 @@
 package mx.uv.lunix.transito;
 
-import android.content.AsyncQueryHandler;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -23,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mx.uv.lunix.transito.ws.HttpUtils;
-import mx.uv.lunix.transito.ws.Response;
+import mx.uv.lunix.transito.ws.Responses;
 import mx.uv.lunix.transito.ws.pojos.Conductor;
 import mx.uv.lunix.transito.ws.pojos.Vehiculo;
 
@@ -33,7 +31,7 @@ public class VehiculosActivity extends AppCompatActivity {
     private Vehiculo vehiculo;
     private ListView listavehiculos;
     private List<Vehiculo> lista_vehiculos;
-    private Response resws;
+    private Responses resws;
 
 
     @Override

@@ -1,6 +1,11 @@
 package mx.uv.lunix.transito.ws.pojos;
 
-public class Conductor {
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.Serializable;
+
+public class Conductor  {
 
     private Integer IdConductor;
     private String Nombre;
@@ -10,6 +15,8 @@ public class Conductor {
     private String NumeroLicencia;
     private String Telefono;
     private String Password;
+
+
 
     public Conductor(Integer idConductor, String nombre, String apellidoPaterno, String apellidoMaterno, String fechaNacimiento, String numeroLicencia, String telefono, String password) {
         IdConductor = idConductor;
@@ -22,7 +29,7 @@ public class Conductor {
         Password = password;
     }
 
-    public Conductor() {
+    public Conductor()  {
 
     }
 
@@ -89,4 +96,6 @@ public class Conductor {
     public void setPassword(String password) {
         Password = password;
     }
+
+
 }
