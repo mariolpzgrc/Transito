@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Cors;
 
 namespace Transito.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("Usuarios")]
     [ApiController]
 
     public class UsuariosController : ControllerBase
@@ -83,14 +83,12 @@ namespace Transito.Controllers
 
                 return NoContent();
             }
-        // POST: api/Usuarios
+        // POST: api/Usuarios17
         [HttpPost]
+        [Route("registrarUsuario")]
             public async Task<IActionResult> PostUsuario([FromBody] Usuario usuario)
             {
-                if (!ModelState.IsValid)
-                {
-                    return BadRequest(ModelState);
-                }
+                
 
                 _context.Usuario.Add(usuario);
                 await _context.SaveChangesAsync();
@@ -98,8 +96,8 @@ namespace Transito.Controllers
                 return CreatedAtAction("GetUsuario", new { id = usuario.Idusuario }, usuario);
             }
 
-            // DELETE: api/Usuarios/5
-            [HttpDelete("{id}")]
+        // DELETE: api/Usuarios/5
+        [HttpDelete("{id}")]
             public async Task<IActionResult> DeleteUsuario([FromRoute] int id)
             {
                 if (!ModelState.IsValid)

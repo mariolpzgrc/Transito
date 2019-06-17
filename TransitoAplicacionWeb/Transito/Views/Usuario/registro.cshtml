@@ -3,23 +3,26 @@
     ViewData["Title"] = "Registro";
 }
 
-<h2>Registro de un Alumno</h2>
+
+<h2>Registro de un Usuario</h2>
 
 <div class="container">
     <div class="row">
 
-        <form method="post" action="/api/Usuarios" id="forma"
+        <form method="post" action="#" id="forma"
               class="form-horizontal col-lg-offset-3 col-lg-6 col-md-offset-2 col-md-8 col-sm-10 col-sm-offset-1">
             <div class="form-group">
-                <label class="control-label col-sm-4" for="correo">Correo Electrónico</label>
+                <label class="control-label col-sm-4" for="correo">Nombre</label>
                 <div class="col-md-8">
                     <div class="input-group">
-                        <span class="input-group-addon">@@</span>
-                        <input type="email" class="form-control" id="correo"
-                               name="correo"
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        </span>
+                        <input type="text" class="form-control" id="correo"
+                               name="nombre"
                                required="required"
                                aria-describedby="emailHelp"
-                               placeholder="Ingresar su correo electrónico">
+                               placeholder="Ingresar su nombre">
                     </div>
 
                 </div>
@@ -58,52 +61,35 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-4" for="nombre">Nombre</label>
+                <label class="control-label col-sm-4" for="nombre">Cargo</label>
                 <div class="col-md-8">
                     <div class="input-group">
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                         </span>
-                        <input type="text" class="form-control" id="nombre"
-                               name="nombre"
-                               required="required"
-                               aria-describedby="emailHelp"
-                               placeholder="Ingrese su nombre">
-                    </div>
-
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-4" for="nombre">Genero</label>
-                <div class="col-md-8">
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                        </span>
-                        <select type="text" class="form-control" id="genero"
-                                name="genero"
+                        <select type="text" class="form-control" id="cargo"
+                                name="cargo"
                                 required="required"
                                 placeholder="Ingrese su nombre">
-                            <option value="M">Masculino</option>
-                            <option value="F">Femenino</option>
+                            <option value="1">Administrador</option>
+                            <option value="2">Perito</option>
                         </select>
                     </div>
 
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-4" for="nombre">Matrícula</label>
+                <label class="control-label col-sm-4" for="nombre">Username</label>
                 <div class="col-md-8">
                     <div class="input-group">
                         <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-barcode" aria-hidden="true">
-                            </span>
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                         </span>
-                        <input type="text" class="form-control" id="matricula"
-                               name="matricula"
+                        <input type="text" class="form-control" id="username"
+                               name="username"
                                required="required"
                                aria-describedby="emailHelp"
-                               placeholder="Ingrese su matrícula">
+                               placeholder="Ingrese su username">
                     </div>
 
                 </div>
@@ -135,7 +121,7 @@
                 Este texto no debe verse
             </div>
             <div class="col-md-offset-4">
-                <button class="btn btn-primary" onclick="validar_enviar(); return false;">Registrar</button>
+                <button class="btn btn-primary" id="regButton">Registrar</button>
             </div>
 
             <div class="modal fade" tabindex="-1" role="dialog" id="dialogoRegistroCorrecto">
@@ -156,53 +142,63 @@
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
 
-            <script>
-                function validar_enviar() {
 
-                    var correo = $("#correo").val();
-                    var paterno = $("#paterno").val();
-                    var materno = $("#materno").val();
-                    var nombre = $("#nombre").val();
-                    var genero = $("#genero").val();
-                    var matricula = $("#matricula").val();
-                    var password = $("#password").val();
-                    var password2 = $("#password2").val();
-                    var hayErrores = false;
-                    var errores = "";
-                    $("#panelErrores").addClass("hide");
-
-                    if (password != password2) {
-                        hayErrores = true;
-                        errores = "<li>No coincide el password y su comprobación. Favor de verificar"
-                    }
-
-                    if (hayErrores) {
-                        $("#panelErrores").html(errores);
-                        $("#panelErrores").removeClass("hide");
-                    } else {
-                        $.ajax({
-                            url: "/api/Usuarios",
-                            data: {
-                                "correo": correo,
-                                "paterno": paterno,
-                                "materno": materno,
-                                "nombre": nombre,
-                                "genero": genero,
-                                "matricula": matricula,
-                                "password": password,
-                            },
-                            type: 'POST',
-                            success: function (datos) {
-                                var resp = jQuery.parseJSON(datos);
-                                if (resp.correcto === "si") {
-                                    $("#dialogoRegistroCorrecto").modal("show");
-                                }
-                            }
-                        });
-                        $("#forma").submit();
-                    }
-                }
-            </script>
         </form>
     </div>
 </div>
+@section Scripts
+            {
+    <script>
+        $(document).ready( () => {
+            function validar_enviar() {
+                var nombre = $("#nombre").val();
+                var paterno = $("#paterno").val();
+                var materno = $("#materno").val();
+                var cargo = $("#cargo").val();
+                var username = $("#username").val();
+                var password = $("#password").val();
+                var password2 = $("#password2").val();
+                var hayErrores = false;
+                var errores = "";
+                $("#panelErrores").addClass("hide");
+
+                if (password != password2) {
+                    hayErrores = true;
+                    errores = "<li>No coincide el password y su comprobación. Favor de verificar"
+                }
+
+                if (hayErrores) {
+                    $("#panelErrores").html(errores);
+                    $("#panelErrores").removeClass("hide");
+                } else {
+                    $.ajax({
+                        data: JSON.stringify(jsonObject),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        url: @Url.Action("Registro", "Usuarios"),
+                        data: {
+                            "Nombre": nombre,
+                            "ApellidoPaterno": paterno,
+                            "ApellidoMaterno": materno,
+                            "Idcargo": cargo,
+                            "Username": username,
+                            "Password": password,
+                        },
+                        type: 'POST',
+                        success: function (datos) {
+                            var resp = jQuery.parseJSON(datos);
+                            if (resp.correcto === "si") {
+                                $("#dialogoRegistroCorrecto").modal("show");
+                            }
+                    });
+                     $("#forma").submit();
+                }
+            }
+
+            $("#regButton").click(() => {
+                validar_enviar();
+            });
+        });
+                
+    </script>
+}

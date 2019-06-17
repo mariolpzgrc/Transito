@@ -38,7 +38,7 @@ namespace Transito.Controllers
 
 
 
-                }return new RedirectToActionResult("Registro", "Home","Home/Registro");
+                }return new RedirectToActionResult("Reportes", "Home","Home/Reportes");
             }else
 
 
@@ -87,7 +87,7 @@ namespace Transito.Controllers
                         ViewBag.idSesion = idSesion;
                         ViewBag.Nombre = nombre;
                         ViewBag.Usuario = usuario;
-                        ViewBag.Reportes = listaReportes();
+                       
 
                         return View("Reportes");
                     }
@@ -99,18 +99,7 @@ namespace Transito.Controllers
             else
                 return new RedirectResult("/");
         }
-        public List<Reporte> listaReportes()
-        {
-            List<Reporte> lista = null;
-
-            using (Models.TransitoContext dbSS = new TransitoContext())
-            {
-                lista=dbSS.Reporte.ToList();
-            }
-
-                return lista;
-
-        }
+       
     }
         
 }
