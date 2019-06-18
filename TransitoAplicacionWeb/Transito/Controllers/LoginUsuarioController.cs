@@ -97,6 +97,7 @@ namespace Transito.Controllers
                         ViewBag.Usuario = usuario;
                         ViewBag.idUsuario = registro.Idusuario;
                         ViewBag.Reportes = listaReportes(registro.Id);
+                        ViewBag.Dictamen = listaDictamen(registro.Id);
 
                         return View("Reportes");
                     }
@@ -119,12 +120,29 @@ namespace Transito.Controllers
                    .FirstOrDefault(b => b.Id == idSesion);
                 if (registro != null && registro.Activa == true)
                 {
-                    lista = dbSS.Reporte.ToList();
+                    lista = dbSS.Reporte.Include(m=> m.AseguradoraImplicadoNavigation).ToList();
                 }
             }
 
             return lista;
 
+        }
+        public List<Dictamen> listaDictamen(int idSesion)
+        {
+            List<Dictamen> lista = null;
+
+            using (Models.TransitoContext dbSS = new TransitoContext())
+            {
+                UsuarioBitacoraAcceso registro =
+                   dbSS.UsuarioBitacoraAcceso
+                   .FirstOrDefault(b => b.Id == idSesion);
+                if (registro != null && registro.Activa == true)
+                {
+                    lista = dbSS.Dictamen.ToList();
+                }
+            }
+
+            return lista;
         }
 
     }

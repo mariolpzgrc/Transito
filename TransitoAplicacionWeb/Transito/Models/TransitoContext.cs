@@ -133,7 +133,7 @@ namespace Transito.Models
             {
                 entity.HasKey(e => e.Folio);
 
-                entity.Property(e => e.Folio).ValueGeneratedNever();
+                entity.Property(e => e.Folio).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Descripcion)
                     .IsRequired()

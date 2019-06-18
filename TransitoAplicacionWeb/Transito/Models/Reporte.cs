@@ -24,6 +24,7 @@ namespace Transito.Models
         public DateTime FechaSuceso { get; set; }
         public int Idevidencia { get; set; }
         public int Idcondutor { get; set; }
+        public bool Estatus { get; set; }
 
         public Aseguradora AseguradoraImplicadoNavigation { get; set; }
         public Conductor IdcondutorNavigation { get; set; }

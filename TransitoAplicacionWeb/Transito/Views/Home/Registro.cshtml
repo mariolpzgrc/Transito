@@ -1,4 +1,7 @@
-﻿
+﻿@{
+    Layout = null;
+}
+
 @{
     ViewData["Title"] = "Registro";
 }
@@ -149,8 +152,8 @@
 @section Scripts
             {
     <script>
-        $(document).ready( () => {
-            function validar_enviar() {                
+        $(document).ready(() => {
+            function validar_enviar() {
                 var nombre = $("#nombre").val();
                 var paterno = $("#paterno").val();
                 var materno = $("#materno").val();
@@ -170,7 +173,7 @@
                 if (hayErrores) {
                     $("#panelErrores").html(errores);
                     $("#panelErrores").removeClass("hide");
-                } else {    
+                } else {
                     var cadenaDatos = {
                         nombre: nombre,
                         apellidoPaterno: paterno,
@@ -185,12 +188,12 @@
                         url: "../Usuarios/registrarUsuario",
                         data: JSON.stringify(cadenaDatos),
                         type: 'POST',
-                        success: function (datos) {                            
+                        success: function (datos) {
                             if (datos.idusuario > 0) {
-                                $("#dialogoRegistroCorrecto").modal("show");                                
+                                $("#dialogoRegistroCorrecto").modal("show");
                             }
                         }
-                    });                     
+                    });
                 }
             }
 
@@ -200,10 +203,10 @@
             });
 
             $("#btnCerrarModalUsuario").click(function () {
-                document.location.href = "../Home";        
+                document.location.href = "../Home";
             });
 
         });
-                
+
     </script>
 }
