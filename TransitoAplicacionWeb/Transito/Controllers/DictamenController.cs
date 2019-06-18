@@ -93,6 +93,9 @@ namespace Transito.Controllers
             }
 
             _context.Dictamen.Add(dictamen);
+            var reporte = _context.Reporte.Where(m => m.Idreporte == dictamen.Idreporte).FirstOrDefault();
+            reporte.Estatus = true;
+            _context.Reporte.Update(reporte);
             try
             {
                 await _context.SaveChangesAsync();
@@ -101,7 +104,8 @@ namespace Transito.Controllers
             {
                 if (DictamenExists(dictamen.Folio))
                 {
-                    return new StatusCodeResult(StatusCodes.Status409Conflict);
+                    //return new StatusCodeResult(StatusCodes.Status409Conflict);
+                    return CreatedAtAction("GetDictamen", new { inserted = false, cause = "Ya existe un dictamen para este reporte" });
                 }
                 else
                 {
@@ -109,7 +113,7 @@ namespace Transito.Controllers
                 }
             }
 
-            return CreatedAtAction("GetDictamen", new { id = dictamen.Folio }, dictamen);
+            return CreatedAtAction("GetDictamen", new { inserted = true, id = dictamen.Folio }, dictamen);
         }
 
         // DELETE: api/Dictamen/5

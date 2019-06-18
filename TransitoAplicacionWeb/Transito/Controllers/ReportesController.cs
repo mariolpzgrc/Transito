@@ -14,7 +14,7 @@ namespace Transito.Controllers
     [ApiController]
 
     public class ReportesController : ControllerBase
-    {
+    {   
         private readonly TransitoContext _context;
 
         public ReportesController(TransitoContext context)
@@ -26,6 +26,7 @@ namespace Transito.Controllers
         [HttpGet]
         public IEnumerable<Reporte> GetReporte()
         {
+           
             return _context.Reporte;
         }
 

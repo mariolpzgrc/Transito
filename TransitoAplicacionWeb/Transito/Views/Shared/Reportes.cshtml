@@ -1,4 +1,8 @@
-﻿@section Scripts{
+﻿@{
+    Layout = null;
+}
+
+@section Scripts{
     <script>
         function verDetalles(idReporte, nombreimplicado, aseguradoraImplicada, lugar, numerodepoliza, marca, color, placa) {
             $("#modalReporte").modal("show");
@@ -26,7 +30,15 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: (data) => {
-                    alert(result.d);
+                    if (data.inserted === true) {
+                        alert("Se dictaminó el reporte #{idreporte} con fecha #{fechaDictamen}");
+                        $("#modalReporte").modal("hide");
+
+                    } else {
+                        alert("Error. Ya existe un dictamen para el reporte seleccionado");
+
+                    }
+
                 }
             });
 
@@ -71,11 +83,18 @@
                 {
                     <tr onclick="verDetalles('@reporte.Idreporte','@reporte.NombreImplicado','@reporte.AseguradoraImplicado','@reporte.Lugar', '@reporte.NumeroPolizaImplicado', '@reporte.MarcaImplicado', '@reporte.ColorImplicado', '@reporte.PlacaImplicado');">
                         <td>@reporte.NombreImplicado</td>
-                        <td>@reporte.AseguradoraImplicado</td>
+                        <td>@reporte.AseguradoraImplicadoNavigation.Nombre</td>
                         <td>@reporte.PlacaImplicado</td>
                         <td>@reporte.FechaSuceso</td>
                         <td>@reporte.Lugar</td>
-                        <td>@reporte.</td>
+                        @if (@reporte.Estatus == false)
+                        {
+                            <td>Pendiente</td>
+                        }
+                        else
+                        {
+                            <td>Dictaminado</td>}
+
                     </tr>
                 }
             </tbody>
