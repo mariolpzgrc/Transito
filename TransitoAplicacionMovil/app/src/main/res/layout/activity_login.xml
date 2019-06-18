@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:minWidth="25px"
+    android:orientation="vertical"
+    android:minHeight="25px"
     tools:context=".LoginActivity">
 
     <LinearLayout
@@ -38,62 +40,70 @@
             android:id="@+id/telefono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="50dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:inputType="text"
-            android:text="Teléfono"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="14sp" />
 
+            android:gravity="right"
+            android:textSize="14sp"
+            android:textColor="@color/colorPrimary"
+            />
         <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="50dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:inputType="textPassword"
-            android:text="Teléfono"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="14sp" />
 
-        <Button
-            android:id="@+id/iniciarSesion"
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="50dp"
-            android:backgroundTint="@color/colorPrimary"
-            android:text="Iniciar Sesión"
-            android:textColor="#fff" />
+            android:gravity="left"
+            android:textSize="14sp"
+            android:inputType="text"
+            android:textColor="@color/colorPrimaryDark"
+            android:id="@+id/telefono"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
 
         <TextView
-            android:id="@+id/cuenta"
-            android:layout_width="match_parent"
+            android:text="Contraseña"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="50dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:inputType="text"
-            android:text="¿No tienes cuenta?"
+            android:gravity="right"
+            android:textSize="14sp"
+            android:textColor="@color/colorPrimary"
+            />
+        <EditText
+            android:inputType="textPassword"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:textSize="14sp"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="14sp" />
-
-        <Button
-            android:id="@+id/crearCuenta"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="50dp"
-            android:backgroundTint="@color/colorPrimary"
-            android:onClick="registrarse"
-            android:text="CREAR CUENTA"
-            android:textColor="#fff" />
+            android:id="@+id/password"
+            />
     </LinearLayout>
-</ScrollView>
+
+    <Button
+        android:id="@+id/iniciarSesion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="50dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:onClick="entrar"
+        android:text="Iniciar Sesión"
+        android:textColor="#fff" />
+
+    <Button
+        android:id="@+id/registrarse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="50dp"
+        android:backgroundTint="#fff"
+        android:onClick="registrarse"
+        android:text="Registrarse"
+        android:textColor="#000" />
+
+</LinearLayout>

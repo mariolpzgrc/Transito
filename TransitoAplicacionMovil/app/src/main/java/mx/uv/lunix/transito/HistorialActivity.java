@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mx.uv.lunix.transito.ws.HttpUtils;
-import mx.uv.lunix.transito.ws.Response;
+import mx.uv.lunix.transito.ws.Responses;
 import mx.uv.lunix.transito.ws.pojos.Conductor;
 import mx.uv.lunix.transito.ws.pojos.Reporte;
 
@@ -31,7 +31,7 @@ public class HistorialActivity extends AppCompatActivity {
     private Reporte reporte;
     private ListView lst_reportes;
     private List<Reporte> lista_reportes;
-    private Response resws;
+    private Responses resws;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

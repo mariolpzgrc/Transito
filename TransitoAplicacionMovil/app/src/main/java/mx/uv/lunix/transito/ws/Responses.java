@@ -1,14 +1,14 @@
 package mx.uv.lunix.transito.ws;
 
 
-public class Response {
+public class Responses {
     private boolean error;
     private int status;
     private String result;
 
-    public Response(){}
+    public Responses(){}
 
-    public Response(int status, String result, boolean error) {
+    public Responses(int status, String result, boolean error) {
         this.status = status;
         this.result = result;
         this.error = error;

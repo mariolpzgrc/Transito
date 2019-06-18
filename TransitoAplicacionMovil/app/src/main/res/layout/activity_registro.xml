@@ -20,7 +20,7 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:inputType="text"
-            android:text="Nombre(s)"
+            android:hint="Nombre(s)"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="14sp" />
         <EditText
@@ -32,7 +32,7 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:inputType="text"
-            android:text="Apellido Paterno"
+            android:hint="Apellido Paterno"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="14sp" />
         <EditText
@@ -44,7 +44,7 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:inputType="text"
-            android:text="Apellido Materno"
+            android:hint="Apellido Materno"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="14sp" />
         <EditText
@@ -56,7 +56,7 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:inputType="date|number"
-            android:text="Fecha de Nacimiento"
+            android:hint="Fecha de Nacimiento"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="14sp" />
 
@@ -69,7 +69,7 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:inputType="text"
-            android:text="Número de Licencia"
+            android:hint="Número de Licencia"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="14sp" />
 
@@ -82,7 +82,7 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:inputType="text"
-            android:text="Número de Celular"
+            android:hint="Número de Celular"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="14sp" />
 
@@ -95,7 +95,7 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:inputType="text"
-            android:text="Contraseña"
+            android:hint="Contraseña"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="14sp" />
 
