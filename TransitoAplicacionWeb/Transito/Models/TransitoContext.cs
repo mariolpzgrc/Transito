@@ -31,7 +31,7 @@ namespace Transito.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=localhost;Database=Transito;UID=adminTransito; PWD=admin;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=tcp:desapps.database.windows.net,1433;Database=Transito;UID=lunix@desapps; PWD=DesApps2019;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             }
         }
 
@@ -133,8 +133,6 @@ namespace Transito.Models
             {
                 entity.HasKey(e => e.Folio);
 
-                entity.Property(e => e.Folio).ValueGeneratedOnAdd();
-
                 entity.Property(e => e.Descripcion)
                     .IsRequired()
                     .HasMaxLength(300)
@@ -205,6 +203,8 @@ namespace Transito.Models
                     .HasColumnName("colorImplicado")
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.Property(e => e.Estatus).HasColumnName("estatus");
 
                 entity.Property(e => e.FechaSuceso)
                     .HasColumnName("fechaSuceso")
